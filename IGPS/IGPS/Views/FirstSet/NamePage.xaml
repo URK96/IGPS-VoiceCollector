@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="IGPS.Views.FirstSet.NamePage"
+             xmlns:local="clr-namespace:IGPS"
+             xmlns:vm="clr-namespace:IGPS.ViewModels"
+             NavigationPage.HasNavigationBar="False">
+
+    <ContentPage.BindingContext>
+        <vm:FirstSetViewModel />
+    </ContentPage.BindingContext>
+    
+    <ContentPage.Content>
+        <AbsoluteLayout>
+            
+            <StackLayout Orientation="Vertical" HorizontalOptions="Center"
+                         AbsoluteLayout.LayoutBounds="0, .1, 1, .3"
+                         AbsoluteLayout.LayoutFlags="All">
+                <Label x:Name="FirstSetNameTitle" FontSize="Title" HorizontalTextAlignment="Center"
+                       Text="{x:Static local:AppResources.UserFirstSet_NamePage_Title}" />
+                <Entry x:Name="FirstSetNameInput" Keyboard="Text" MaxLength="10" HorizontalTextAlignment="Center"
+                       Margin="0, 20, 0, 0"
+                       TextChanged="FirstSetNameInput_TextChanged" />
+                <Label x:Name="FirstSetNameInputStatus" IsVisible="false"
+                       Text="{x:Static local:AppResources.UserFirstSet_InputError_OnlyKorean}" TextColor="Red" FontSize="Caption" HorizontalTextAlignment="Center"/>
+            </StackLayout>
+
+            <Button x:Name="FirstSetNameNextButton" IsEnabled="false"
+                    Text="{x:Static local:AppResources.UserFirstSet_NextButton_Next}" FontSize="Large" TextColor="White"
+                    AbsoluteLayout.LayoutBounds=".5, .75, .7, .08"
+                    AbsoluteLayout.LayoutFlags="All"
+                    Command="{Binding SaveInput}" CommandParameter="{Binding SetInfo}"
+                    Clicked="FirstSetNameNextButton_Clicked"/>
+        </AbsoluteLayout>
+    </ContentPage.Content>
+
+</ContentPage>

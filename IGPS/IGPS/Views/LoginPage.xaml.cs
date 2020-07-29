@@ -1,17 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿
+using IGPS.Models;
+using IGPS.Views.FirstSet;
 using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using Xamarin.Essentials;
-using Xamarin.Auth.OAuth2;
-using IGPS.Models;
-using IGPS.Services;
-using System.Net;
-using System.Net.Http;
 
 namespace IGPS.Views
 {
@@ -22,36 +14,35 @@ namespace IGPS.Views
         {
             InitializeComponent();
 
-            
+            MessagingCenter.Subscribe<UserInfo, bool>(this, MessengerKeys.AuthenticationRequested, CheckLogIn);
         }
 
-        private async void KakaoLoginButton_Clicked(object sender, EventArgs e)
+        private void CheckLogIn(UserInfo user, bool isLogin)
         {
-            try
+            if (isLogin || UserInfo.LoadUserInfo() != null)
             {
-                if (UserInfo.LoadUserInfo() != null)
-                {
-                    TestLabel.Text = "이미 사용자가 존재합니다.";
+                DependencyService.Get<IToast>().Show(AppResources.SNSLogin_LoginSuccess);
 
-                    return;
-                }
-
-                var authService = new AuthService();
-
-                await authService.LoginWithSNSAsync(SNSProvider.Kakao);
+                Application.Current.MainPage = new NavigationPage();
+                Application.Current.MainPage.Navigation.PushAsync(new NamePage(), true);
             }
-            catch (Exception ex) when ((ex is WebException) || (ex is HttpRequestException))
+            else
             {
+                SNSLoginMethodLayout.IsVisible = true;
+            }
+        }
 
-            }
-            catch (Exception ex)
-            {
-                //Debug.WriteLine($"Error in: {ex}");
-            }
-            finally
-            {
-                IsBusy = false;
-            }
+        protected override async void OnAppearing()
+        {
+            base.OnAppearing();
+
+            AppEnvironment.ToggleLoadingIndicator(LoginIndicator, true);
+
+            await Task.Delay(1000);
+
+            CheckLogIn(null, false);
+
+            AppEnvironment.ToggleLoadingIndicator(LoginIndicator, false);
         }
     }
 }

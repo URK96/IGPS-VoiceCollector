@@ -61,20 +61,110 @@ namespace IGPS {
         }
         
         /// <summary>
-        ///   이름과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   로그인에 성공했습니다.과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
-        internal static string FirstSetting_Name {
+        internal static string SNSLogin_LoginSuccess {
             get {
-                return ResourceManager.GetString("FirstSetting_Name", resourceCulture);
+                return ResourceManager.GetString("SNSLogin_LoginSuccess", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   네트워크 문제로 로그인할 수 없습니다 :(과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
-        internal static string Login_ {
+        internal static string SNSLogin_NetworkError {
             get {
-                return ResourceManager.GetString("Login_", resourceCulture);
+                return ResourceManager.GetString("SNSLogin_NetworkError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   문제가 발생하여 로그인할 수 없습니다 :(과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string SNSLogin_UnknownError {
+            get {
+                return ResourceManager.GetString("SNSLogin_UnknownError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   나이를 입력하세요과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string UserFirstSet_AgePage_Title {
+            get {
+                return ResourceManager.GetString("UserFirstSet_AgePage_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   여자과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string UserFirstSet_GenderPage_Female {
+            get {
+                return ResourceManager.GetString("UserFirstSet_GenderPage_Female", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   남자과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string UserFirstSet_GenderPage_Male {
+            get {
+                return ResourceManager.GetString("UserFirstSet_GenderPage_Male", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   성별을 선택하세요과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string UserFirstSet_GenderPage_Title {
+            get {
+                return ResourceManager.GetString("UserFirstSet_GenderPage_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   해당 항목을 채워주세요과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string UserFirstSet_InputError_Blank {
+            get {
+                return ResourceManager.GetString("UserFirstSet_InputError_Blank", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   10자 이하의 한글로 입력해 주세요과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string UserFirstSet_InputError_OnlyKorean {
+            get {
+                return ResourceManager.GetString("UserFirstSet_InputError_OnlyKorean", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   이름을 입력하세요과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string UserFirstSet_NamePage_Title {
+            get {
+                return ResourceManager.GetString("UserFirstSet_NamePage_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   완료과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string UserFirstSet_NextButton_Finish {
+            get {
+                return ResourceManager.GetString("UserFirstSet_NextButton_Finish", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   다음 단계로과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string UserFirstSet_NextButton_Next {
+            get {
+                return ResourceManager.GetString("UserFirstSet_NextButton_Next", resourceCulture);
             }
         }
     }

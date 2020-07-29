@@ -21,7 +21,8 @@ namespace IGPS.Droid
             base.OnCreate(savedInstanceState);
 
             Platform.Init(this, savedInstanceState);
-            Xamarin.Forms.Forms.Init(this, savedInstanceState);
+            Xamarin.Forms.Forms.SetFlags(new string[] { "RadioButton_Experimental" });
+            Xamarin.Forms.Forms.Init(this, savedInstanceState);  
             Xamarin.Auth.Presenters.XamarinAndroid.AuthenticationConfiguration.Init(this, savedInstanceState);
             LoadApplication(new App());
         }

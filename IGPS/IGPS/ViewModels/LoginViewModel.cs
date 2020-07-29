@@ -1,30 +1,25 @@
 ﻿using IGPS.Models;
-using IGPS.Services.Auth;
+
 using System;
-using System.Collections.Generic;
-using System.Text;
-using Xamarin.Forms;
-using System.Threading.Tasks;
-using System.Net.Http;
 using System.Net;
+using System.Net.Http;
 using System.Windows.Input;
+
+using Xamarin.Forms;
 
 namespace IGPS.ViewModels
 {
     class LoginViewModel : BaseViewModel
     {
-        private IAuthService authService;
-
-        public ICommand SNSSignInCommand;
+        public ICommand SNSSignInCommand { private set; get; }
 
         public LoginViewModel()
         {
-            SNSSignInCommand = new Command<SNSProvider?>(async (provider) => { await SNSSignIn(provider); });
-
-            
+            SNSSignInCommand = new Command<SNSProvider?>(
+                execute: (provider) => { SNSSignIn(provider); });
         }
 
-        public async Task SNSSignIn(SNSProvider? provider)
+        public void SNSSignIn(SNSProvider? provider)
         {
             IsBusy = true;
 
@@ -32,16 +27,16 @@ namespace IGPS.ViewModels
             {
                 if (provider.HasValue)
                 {
-                    await authService.LoginWithSNSAsync(provider.Value);
+                    AppEnvironment.authService.LoginWithSNS(provider.Value);
                 }
             }
             catch (Exception ex) when ((ex is WebException) || (ex is HttpRequestException))
             {
-                
+                DependencyService.Get<IToast>().Show(AppResources.SNSLogin_NetworkError);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                //Debug.WriteLine($"Error in: {ex}");
+                DependencyService.Get<IToast>().Show(AppResources.SNSLogin_UnknownError);
             }
             finally
             {

@@ -13,6 +13,8 @@ namespace IGPS
         {
             InitializeComponent();
 
+            AppEnvironment.authService = new AuthService();
+
             DependencyService.Register<MockDataStore>();
             MainPage = new LoginPage();
         }

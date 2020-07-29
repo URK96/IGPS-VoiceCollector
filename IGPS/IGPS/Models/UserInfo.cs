@@ -14,18 +14,12 @@ namespace IGPS.Models
         public DateTime ExpiresIn { get; set; }
         public string Name { get; set; }
         public string LastName { get; set; }
+        public int Age { get; set; }
+        public GenderType Gender { get; set; }
         public string Email { get; set; }
         public string PictureUrl { get; set; }
         public bool LoggedInWithSNSAccount { get; set; }
         public SNSProvider Provider { get; set; }
-
-    //    Email = email,
-				//Name = email,
-				//LastName = string.Empty,
-				//PictureUrl = "",
-				//Token = email,
-				//LoggedInWithSNSAccount = false,
-				//Provider = SNSProvider.None
 
         public void SaveUserInfo()
         {

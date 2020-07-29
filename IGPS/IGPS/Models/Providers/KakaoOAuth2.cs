@@ -45,8 +45,7 @@ namespace IGPS.Models.Providers
             UserInfo user = null;
             string token = account.Properties["access_token"];
             string refreshToke = account.Properties["refresh_token"];
-            int expriesIn;
-            int.TryParse(account.Properties["expires_in"], out expriesIn);
+            int.TryParse(account.Properties["expires_in"], out int expriesIn);
 
             var parameters = new Dictionary<string, string>();
 

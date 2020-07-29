@@ -15,7 +15,7 @@ namespace IGPS.Services
     {
 		OAuth2Base oAuth2;
 
-		public bool IsAuthenticated => UserInfo.LoadUserInfo() != null;
+        public bool IsAuthenticated => UserInfo.LoadUserInfo() != null;
 		public UserInfo AuthenticatedUser => UserInfo.LoadUserInfo();
 
 		public Task<bool> LoginAsync(string email, string password)
@@ -37,7 +37,7 @@ namespace IGPS.Services
 			return Task.FromResult(true);
 		}
 
-		public Task LoginWithSNSAsync(SNSProvider provider)
+		public bool LoginWithSNS(SNSProvider provider)
 		{
 			try
 			{
@@ -53,8 +53,6 @@ namespace IGPS.Services
 					null,
 					oAuth2.IsUsingNativeUI);
 
-				//authenticator.Completed += OnAuthCompleted;
-				//authenticator.Error += OnAuthError;
 				authenticator.Completed += async (s, e) =>
 				{
 					//var auth2Authenticator = s as OAuth2Authenticator;
@@ -66,7 +64,7 @@ namespace IGPS.Services
 
 						//AppSettings.User = user;
 						user.SaveUserInfo();
-						MessagingCenter.Send(user, "AuthenticationRequested", true);
+						MessagingCenter.Send(user, MessengerKeys.AuthenticationRequested, true);
 						//Debug.WriteLine("Authentication Success");
 					}
 				};
@@ -82,10 +80,10 @@ namespace IGPS.Services
 			{
 				//Debug.WriteLine("Login Error : " + ex.Message);
 
-				return Task.FromResult(false);
+				return false;
 			}
 
-			return Task.FromResult(true);
+			return true;
 		}
 
 		public async Task<bool> UserIsAuthenticatedAndValidAsync()

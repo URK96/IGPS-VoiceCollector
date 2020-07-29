@@ -117,10 +117,40 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="FirstSetting_Name" xml:space="preserve">
-    <value>이름</value>
+  <data name="SNSLogin_LoginSuccess" xml:space="preserve">
+    <value>로그인에 성공했습니다.</value>
   </data>
-  <data name="Login_" xml:space="preserve">
-    <value />
+  <data name="SNSLogin_NetworkError" xml:space="preserve">
+    <value>네트워크 문제로 로그인할 수 없습니다 :(</value>
+  </data>
+  <data name="SNSLogin_UnknownError" xml:space="preserve">
+    <value>문제가 발생하여 로그인할 수 없습니다 :(</value>
+  </data>
+  <data name="UserFirstSet_AgePage_Title" xml:space="preserve">
+    <value>나이를 입력하세요</value>
+  </data>
+  <data name="UserFirstSet_GenderPage_Female" xml:space="preserve">
+    <value>여자</value>
+  </data>
+  <data name="UserFirstSet_GenderPage_Male" xml:space="preserve">
+    <value>남자</value>
+  </data>
+  <data name="UserFirstSet_GenderPage_Title" xml:space="preserve">
+    <value>성별을 선택하세요</value>
+  </data>
+  <data name="UserFirstSet_InputError_Blank" xml:space="preserve">
+    <value>해당 항목을 채워주세요</value>
+  </data>
+  <data name="UserFirstSet_InputError_OnlyKorean" xml:space="preserve">
+    <value>10자 이하의 한글로 입력해 주세요</value>
+  </data>
+  <data name="UserFirstSet_NamePage_Title" xml:space="preserve">
+    <value>이름을 입력하세요</value>
+  </data>
+  <data name="UserFirstSet_NextButton_Finish" xml:space="preserve">
+    <value>완료</value>
+  </data>
+  <data name="UserFirstSet_NextButton_Next" xml:space="preserve">
+    <value>다음 단계로</value>
   </data>
 </root>

@@ -12,7 +12,7 @@ namespace IGPS.Services.Auth
         UserInfo AuthenticatedUser { get; }
 
         Task<bool> LoginAsync(string email, string password);
-        Task LoginWithSNSAsync(SNSProvider provider);
+        bool LoginWithSNS(SNSProvider provider);
         Task<bool> UserIsAuthenticatedAndValidAsync();
         Task LogoutAsync();
     }
