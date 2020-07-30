@@ -21,13 +21,16 @@ namespace IGPS.Droid
             base.OnCreate(savedInstanceState);
 
             Platform.Init(this, savedInstanceState);
-            Xamarin.Forms.Forms.SetFlags(new string[] { "RadioButton_Experimental" });
+            Xamarin.Forms.Forms.SetFlags(new string[] { "RadioButton_Experimental", "Shapes_Experimental" });
             Xamarin.Forms.Forms.Init(this, savedInstanceState);  
             Xamarin.Auth.Presenters.XamarinAndroid.AuthenticationConfiguration.Init(this, savedInstanceState);
             LoadApplication(new App());
+
+            Permissions.RequestAsync<Permissions.StorageRead>();
+            Permissions.RequestAsync<Permissions.StorageWrite>();
         }
 
-        public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
+        public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Permission[] grantResults)
         {
             Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
 

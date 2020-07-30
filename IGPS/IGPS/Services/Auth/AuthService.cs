@@ -31,7 +31,6 @@ namespace IGPS.Services
 				Provider = SNSProvider.None
 			};
 
-			//AppSettings.User = user;
 			user.SaveUserInfo();
 
 			return Task.FromResult(true);

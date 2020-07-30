@@ -5,22 +5,38 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="IGPS.Views.MenuPage"
+             Padding="0, 20, 0, 0"
              Title="Menu">
-             
-    <StackLayout VerticalOptions="FillAndExpand">
-        <ListView x:Name="ListViewMenu"
-                    HasUnevenRows="True">
+
+    <StackLayout VerticalOptions="Start">
+
+        <Grid Padding="10, 0, 0, 0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="30"/>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Image Source="icon.png" />
+            <Label Grid.Column="1" 
+                   Text="Voice Collector" FontSize="Large" FontAttributes="Bold" VerticalTextAlignment="Center"/>
+        </Grid>
+
+        <Line Stroke="Gray" />
+
+        <ListView x:Name="MainMenuPageListView"
+                  HasUnevenRows="True">
             <d:ListView.ItemsSource>
                 <x:Array Type="{x:Type x:String}">
                     <x:String>Item 1</x:String>
                     <x:String>Item 2</x:String>
+                    <x:String>Item 3</x:String>
+                    <x:String>Item 4</x:String>
                 </x:Array>
             </d:ListView.ItemsSource>
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
                         <Grid Padding="10">
-                            <Label Text="{Binding Title}" d:Text="{Binding .}" FontSize="20"/>
+                            <Label Text="{Binding Title}" d:Text="{Binding .}" FontSize="Title"/>
                         </Grid>
                     </ViewCell>
                 </DataTemplate>

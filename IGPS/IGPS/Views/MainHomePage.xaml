@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="IGPS.Views.MainHomePage"
+             xmlns:vm="clr-namespace:IGPS.ViewModels"
+             Title="{Binding Title}">
+
+    <ContentPage.BindingContext>
+        <vm:MainHomeViewModel />
+    </ContentPage.BindingContext>
+    
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                <Label Margin="0, 20, 0, 0" 
+                       Text="{Binding User.Name, StringFormat='{0}님의 진행 정보'}" FontSize="Title" HorizontalTextAlignment="Center" />
+                
+                <StackLayout Orientation="Vertical" Margin="0, 100, 0, 0">
+                    <Label Text="{Binding ConvertProgress, StringFormat='{0:F1}% 완료'}" HorizontalTextAlignment="Center" FontSize="Large" />
+                    <ProgressBar x:Name="MainProgressBar" 
+                                 WidthRequest="300" HorizontalOptions="Center"
+                                 Progress="{Binding Progress}"/>
+                </StackLayout>
+
+                <Frame CornerRadius="10" HasShadow="True"
+                       Margin="20, 50, 20, 0" Padding="0">
+                    <Button x:Name="GoRecordButton"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
+                            BackgroundColor="AliceBlue"
+                            Text="녹음하러 가기" FontSize="Body"
+                            Clicked="GoRecordButton_Clicked"/>
+                </Frame>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+    
+</ContentPage>

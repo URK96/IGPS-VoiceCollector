@@ -17,6 +17,9 @@ namespace IGPS.Views.FirstSet
 
             (BindingContext as FirstSetViewModel).SetInfo.Type = FirstSetType.Age;
             (BindingContext as FirstSetViewModel).SetInfo.DataView = FirstSetAgeInput;
+
+            FirstSetAgeNextButton.IsEnabled = false;
+            FirstSetAgeNextButton.BackgroundColor = Color.Default;
         }
 
         private void FirstSetAgeInput_TextChanged(object sender, TextChangedEventArgs e)

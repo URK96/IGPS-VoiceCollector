@@ -6,13 +6,15 @@ namespace IGPS.Models
 {
     public enum MenuItemType
     {
-        Browse,
+        Home,
+        RecordList,
+        Setting,
         About
     }
-    public class HomeMenuItem
+
+    public class MainMenuItem
     {
         public MenuItemType Id { get; set; }
-
         public string Title { get; set; }
     }
 }

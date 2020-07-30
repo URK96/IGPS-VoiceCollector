@@ -33,6 +33,7 @@ namespace IGPS.ViewModels
                     break;
                 case FirstSetType.Gender:
                     user.Gender = (info.DataView as RadioButton).Text == AppResources.UserFirstSet_GenderPage_Male ? GenderType.Male : GenderType.Female;
+                    user.FirstSetCompleted = true;
                     break;
                 default:
                     return;

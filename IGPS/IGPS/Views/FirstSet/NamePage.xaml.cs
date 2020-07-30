@@ -21,6 +21,9 @@ namespace IGPS.Views.FirstSet
 
             (BindingContext as FirstSetViewModel).SetInfo.Type = FirstSetType.Name;
             (BindingContext as FirstSetViewModel).SetInfo.DataView = FirstSetNameInput;
+
+            FirstSetNameNextButton.IsEnabled = false;
+            FirstSetNameNextButton.BackgroundColor = Color.Default;
         }
 
         private void FirstSetNameInput_TextChanged(object sender, TextChangedEventArgs e)

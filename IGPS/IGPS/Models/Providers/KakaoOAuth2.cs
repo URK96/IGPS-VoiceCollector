@@ -42,9 +42,9 @@ namespace IGPS.Models.Providers
 
         public override async Task<UserInfo> GetUserInfoAsync(Account account)
         {
-            UserInfo user = null;
-            string token = account.Properties["access_token"];
-            string refreshToke = account.Properties["refresh_token"];
+            var user = AppEnvironment.authService.AuthenticatedUser;
+            //string token = account.Properties["access_token"];
+            //string refreshToke = account.Properties["refresh_token"];
             int.TryParse(account.Properties["expires_in"], out int expriesIn);
 
             var parameters = new Dictionary<string, string>();
@@ -58,18 +58,21 @@ namespace IGPS.Models.Providers
                     string userJson = await response.GetResponseTextAsync();
                     var kakaoUser = JsonConvert.DeserializeObject<KakaoUser>(userJson);
 
-                    user = new UserInfo
+                    if (user == null)
                     {
-                        Id = kakaoUser.Id,
-                        Token = token,
-                        RefreshToken = refreshToke,
-                        //Name = kakaoUser.Properties.NickName,
-                        //Email = kakaoUser.Email,
-                        ExpiresIn = DateTime.UtcNow.Add(new TimeSpan(expriesIn)),
-                        //PictureUrl = kakaoUser.Properties.ProfileImage,
-                        Provider = SNSProvider.Kakao,
-                        LoggedInWithSNSAccount = true,
-                    };
+                        user = new UserInfo
+                        {
+                            Id = kakaoUser.Id,
+                            Provider = SNSProvider.Kakao,
+                            LoggedInWithSNSAccount = true
+                        };
+                    }
+                    else
+                    {
+                        user.Id = kakaoUser.Id;
+                        user.Provider = SNSProvider.Kakao;
+                        user.LoggedInWithSNSAccount = true;
+                    }
                 }
             }
 

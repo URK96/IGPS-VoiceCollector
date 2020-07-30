@@ -23,8 +23,15 @@ namespace IGPS.Views
             {
                 DependencyService.Get<IToast>().Show(AppResources.SNSLogin_LoginSuccess);
 
-                Application.Current.MainPage = new NavigationPage();
-                Application.Current.MainPage.Navigation.PushAsync(new NamePage(), true);
+                if (!AppEnvironment.authService.AuthenticatedUser.FirstSetCompleted)
+                {
+                    Application.Current.MainPage = new NavigationPage();
+                    Application.Current.MainPage.Navigation.PushAsync(new NamePage(), true);
+                }
+                else
+                {
+                    Application.Current.MainPage = new MainPage();
+                }
             }
             else
             {

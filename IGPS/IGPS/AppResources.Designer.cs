@@ -61,6 +61,42 @@ namespace IGPS {
         }
         
         /// <summary>
+        ///   앱 정보과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string Main_MenuPage_About {
+            get {
+                return ResourceManager.GetString("Main_MenuPage_About", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   메인과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string Main_MenuPage_Home {
+            get {
+                return ResourceManager.GetString("Main_MenuPage_Home", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   녹음 목록과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string Main_MenuPage_RecordList {
+            get {
+                return ResourceManager.GetString("Main_MenuPage_RecordList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   설정과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string Main_MenuPage_Setting {
+            get {
+                return ResourceManager.GetString("Main_MenuPage_Setting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   로그인에 성공했습니다.과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string SNSLogin_LoginSuccess {

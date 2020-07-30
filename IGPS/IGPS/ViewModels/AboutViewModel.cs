@@ -10,7 +10,7 @@ namespace IGPS.ViewModels
     {
         public AboutViewModel()
         {
-            Title = "About";
+            Title = AppResources.Main_MenuPage_About;
             OpenWebCommand = new Command(async () => await Browser.OpenAsync("https://xamarin.com"));
         }
 

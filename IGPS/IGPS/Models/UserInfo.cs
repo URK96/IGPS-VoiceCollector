@@ -20,6 +20,7 @@ namespace IGPS.Models
         public string PictureUrl { get; set; }
         public bool LoggedInWithSNSAccount { get; set; }
         public SNSProvider Provider { get; set; }
+        public bool FirstSetCompleted { get; set; }
 
         public void SaveUserInfo()
         {
@@ -66,5 +67,7 @@ namespace IGPS.Models
 
             }
         }
+
+        public string GetUserString() => $"{Provider}_{Id}_{Name}";
     }
 }

@@ -117,6 +117,18 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Main_MenuPage_About" xml:space="preserve">
+    <value>앱 정보</value>
+  </data>
+  <data name="Main_MenuPage_Home" xml:space="preserve">
+    <value>메인</value>
+  </data>
+  <data name="Main_MenuPage_RecordList" xml:space="preserve">
+    <value>녹음 목록</value>
+  </data>
+  <data name="Main_MenuPage_Setting" xml:space="preserve">
+    <value>설정</value>
+  </data>
   <data name="SNSLogin_LoginSuccess" xml:space="preserve">
     <value>로그인에 성공했습니다.</value>
   </data>
