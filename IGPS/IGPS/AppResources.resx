@@ -126,8 +126,17 @@
   <data name="Main_MenuPage_RecordList" xml:space="preserve">
     <value>녹음 목록</value>
   </data>
+  <data name="Main_MenuPage_RecordSection" xml:space="preserve">
+    <value>녹음 세션 목록</value>
+  </data>
   <data name="Main_MenuPage_Setting" xml:space="preserve">
     <value>설정</value>
+  </data>
+  <data name="Record" xml:space="preserve">
+    <value>녹음</value>
+  </data>
+  <data name="Re_Record" xml:space="preserve">
+    <value>다시 녹음</value>
   </data>
   <data name="SNSLogin_LoginSuccess" xml:space="preserve">
     <value>로그인에 성공했습니다.</value>
@@ -137,6 +146,9 @@
   </data>
   <data name="SNSLogin_UnknownError" xml:space="preserve">
     <value>문제가 발생하여 로그인할 수 없습니다 :(</value>
+  </data>
+  <data name="Upload" xml:space="preserve">
+    <value>업로드</value>
   </data>
   <data name="UserFirstSet_AgePage_Title" xml:space="preserve">
     <value>나이를 입력하세요</value>

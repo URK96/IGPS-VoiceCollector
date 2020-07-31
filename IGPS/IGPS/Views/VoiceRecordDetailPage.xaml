@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="IGPS.Views.VoiceRecordDetailPage"
+             xmlns:local="clr-namespace:IGPS"
+             Title="{Binding Title}">
+    
+    <!--Binded ViewModel with Code-->
+    
+    <ContentPage.Content>
+        <AbsoluteLayout>
+            
+            <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand"
+                         AbsoluteLayout.LayoutBounds="0, .1, 1, .1"
+                         AbsoluteLayout.LayoutFlags="All">
+                <Label HorizontalOptions="FillAndExpand" 
+                       Text="녹음할 내용" HorizontalTextAlignment="Center" FontSize="Title" FontAttributes="Bold" />
+
+                <ScrollView Margin="0, 30, 0, 0">
+                    <Label Padding="30, 0, 30, 0" 
+                           Text="{Binding Item.VoiceText}" FontSize="Large" />
+                </ScrollView>
+
+            </StackLayout>
+            
+
+            <Grid AbsoluteLayout.LayoutBounds="0, 1, 1, .1"
+                  AbsoluteLayout.LayoutFlags="All"
+                  HorizontalOptions="FillAndExpand">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Frame Grid.Row="0" Grid.Column="0"
+                       Padding="0">
+                    <Button HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
+                            BackgroundColor="AliceBlue" 
+                            Text="{x:Static local:AppResources.Record}" />
+                </Frame>
+                <Frame Grid.Row="0" Grid.Column="1" 
+                       Padding="0">
+                    <Button HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" 
+                            BackgroundColor="AliceBlue" 
+                            Text="{x:Static local:AppResources.Upload}" />
+                </Frame>
+            </Grid>
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

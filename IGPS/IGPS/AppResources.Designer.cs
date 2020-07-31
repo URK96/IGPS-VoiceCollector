@@ -88,11 +88,38 @@ namespace IGPS {
         }
         
         /// <summary>
+        ///   녹음 세션 목록과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string Main_MenuPage_RecordSection {
+            get {
+                return ResourceManager.GetString("Main_MenuPage_RecordSection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   설정과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string Main_MenuPage_Setting {
             get {
                 return ResourceManager.GetString("Main_MenuPage_Setting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   다시 녹음과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string Re_Record {
+            get {
+                return ResourceManager.GetString("Re_Record", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   녹음과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string Record {
+            get {
+                return ResourceManager.GetString("Record", resourceCulture);
             }
         }
         
@@ -120,6 +147,15 @@ namespace IGPS {
         internal static string SNSLogin_UnknownError {
             get {
                 return ResourceManager.GetString("SNSLogin_UnknownError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   업로드과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string Upload {
+            get {
+                return ResourceManager.GetString("Upload", resourceCulture);
             }
         }
         
