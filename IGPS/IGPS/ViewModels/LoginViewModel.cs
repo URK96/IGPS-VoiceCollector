@@ -4,7 +4,7 @@ using System;
 using System.Net;
 using System.Net.Http;
 using System.Windows.Input;
-
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace IGPS.ViewModels
@@ -15,6 +15,9 @@ namespace IGPS.ViewModels
 
         public LoginViewModel()
         {
+            Permissions.RequestAsync<Permissions.StorageRead>();
+            Permissions.RequestAsync<Permissions.StorageWrite>();
+
             SNSSignInCommand = new Command<SNSProvider?>(
                 execute: (provider) => { SNSSignIn(provider); });
         }

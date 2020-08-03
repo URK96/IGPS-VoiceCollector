@@ -24,7 +24,11 @@ namespace IGPS.Views
         private async void GoRecordButton_Clicked(object sender, EventArgs e)
         {
             await RootPage.NavigateFromMenu((int)MenuItemType.RecordList);
-            //MainMenuPage.MainMenu.SelectedItem = MainMenuPage.menuItems[1];
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
         }
     }
 }

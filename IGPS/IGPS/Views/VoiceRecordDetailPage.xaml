@@ -36,13 +36,14 @@
                 </Grid.ColumnDefinitions>
                 <Frame Grid.Row="0" Grid.Column="0"
                        Padding="0">
-                    <Button HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
+                    <Button x:Name="RecordButton" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
                             BackgroundColor="AliceBlue" 
-                            Text="{x:Static local:AppResources.Record}" />
+                            Text="{x:Static local:AppResources.Record}"
+                            Clicked="RecordButton_Clicked"/>
                 </Frame>
                 <Frame Grid.Row="0" Grid.Column="1" 
                        Padding="0">
-                    <Button HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" 
+                    <Button x:Name="UploadButton" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" 
                             BackgroundColor="AliceBlue" 
                             Text="{x:Static local:AppResources.Upload}" />
                 </Frame>

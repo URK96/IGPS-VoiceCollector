@@ -12,12 +12,12 @@ namespace IGPS.Services
     public class DataService
     {
         UserInfo User => AppEnvironment.authService.AuthenticatedUser;
-        string LocalDataFilePath => Path.Combine(AppEnvironment.appDataPath, User.GetUserString(), "UserVoiceData.xml");
+        public string LocalDataFilePath => Path.Combine(AppEnvironment.appDataPath, User.GetUserString(), "UserVoiceData.xml");
         string ServerDefaultDataDirPath => Path.Combine(AppEnvironment.ftpRootPath, "UserData", "Default");
-        string ServerUserDataDirPath => Path.Combine(AppEnvironment.ftpRootPath, "UserData", User.GetUserString());
+        public string ServerUserDataDirPath => Path.Combine(AppEnvironment.ftpRootPath, "UserData", User.GetUserString());
         readonly string serverFile = "VoiceData.xml";
 
-        DataTable voiceDataTable = null;
+        public DataTable voiceDataTable = null;
         public List<VoiceDataItem> voiceDataItems;
 
         public DataService()
@@ -50,8 +50,11 @@ namespace IGPS.Services
             return true;
         }
 
-        public DataRow FindDataRow<T>(string columnIndex, T value)
+        public DataRow FindDataRow(int section, int number)
         {
+            const string SectionIndex = "Section";
+            const string NumberIndex = "No.";
+
             if (voiceDataTable == null)
             {
                 return null;
@@ -59,13 +62,19 @@ namespace IGPS.Services
 
             foreach (DataRow dr in voiceDataTable.Rows)
             {
-                if (value.Equals((T)dr[columnIndex]))
+                if ((section == (int)dr[SectionIndex]) && (number == (int)dr[NumberIndex]))
                 {
                     return dr;
                 }
             }
 
             return null;
+        }
+
+        public void UpdateItem()
+        {
+            voiceDataItems.Clear();
+            ListItem();
         }
 
         public bool LoadTable()
@@ -110,11 +119,19 @@ namespace IGPS.Services
 
         public bool DownloadTable()
         {
-            string serverPath = Path.Combine(FTPService.CheckDirExist(ServerUserDataDirPath) ? ServerUserDataDirPath : ServerDefaultDataDirPath, serverFile); 
+            string serverPath = Path.Combine(FTPService.CheckDirExist(ServerUserDataDirPath) ? ServerUserDataDirPath : ServerDefaultDataDirPath, serverFile);
 
             return FTPService.DownloadFile(LocalDataFilePath, serverPath);
         }
 
-        public bool UploadTable() => FTPService.UploadFile(LocalDataFilePath, Path.Combine(ServerUserDataDirPath, serverFile));
+        public bool UploadTable()
+        {
+            if (!FTPService.CheckDirExist(ServerUserDataDirPath))
+            {
+                FTPService.CreateDir(ServerUserDataDirPath);
+            }
+
+            return FTPService.UploadFile(LocalDataFilePath, Path.Combine(ServerUserDataDirPath, serverFile));
+        }
     }
 }

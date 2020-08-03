@@ -64,13 +64,6 @@ namespace IGPS.Services.Server
         {
             try
             {
-                string serverParentDir = Path.GetDirectoryName(serverPath);
-
-                if (!CheckDirExist(serverParentDir))
-                {
-                    CreateDir(serverParentDir);
-                }
-
                 using (var wc = new WebClient())
                 {
                     wc.Credentials = new NetworkCredential(id, pw);

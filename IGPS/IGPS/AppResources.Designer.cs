@@ -124,6 +124,24 @@ namespace IGPS {
         }
         
         /// <summary>
+        ///   다시 업로드과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string ReUpload {
+            get {
+                return ResourceManager.GetString("ReUpload", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   저장 중...과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string Saving {
+            get {
+                return ResourceManager.GetString("Saving", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   로그인에 성공했습니다.과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string SNSLogin_LoginSuccess {
@@ -151,11 +169,29 @@ namespace IGPS {
         }
         
         /// <summary>
+        ///   녹음 중지과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string StopRecord {
+            get {
+                return ResourceManager.GetString("StopRecord", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   업로드과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string Upload {
             get {
                 return ResourceManager.GetString("Upload", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   업로드 중...과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string Uploading {
+            get {
+                return ResourceManager.GetString("Uploading", resourceCulture);
             }
         }
         

@@ -135,8 +135,14 @@
   <data name="Record" xml:space="preserve">
     <value>녹음</value>
   </data>
+  <data name="ReUpload" xml:space="preserve">
+    <value>다시 업로드</value>
+  </data>
   <data name="Re_Record" xml:space="preserve">
     <value>다시 녹음</value>
+  </data>
+  <data name="Saving" xml:space="preserve">
+    <value>저장 중...</value>
   </data>
   <data name="SNSLogin_LoginSuccess" xml:space="preserve">
     <value>로그인에 성공했습니다.</value>
@@ -147,8 +153,14 @@
   <data name="SNSLogin_UnknownError" xml:space="preserve">
     <value>문제가 발생하여 로그인할 수 없습니다 :(</value>
   </data>
+  <data name="StopRecord" xml:space="preserve">
+    <value>녹음 중지</value>
+  </data>
   <data name="Upload" xml:space="preserve">
     <value>업로드</value>
+  </data>
+  <data name="Uploading" xml:space="preserve">
+    <value>업로드 중...</value>
   </data>
   <data name="UserFirstSet_AgePage_Title" xml:space="preserve">
     <value>나이를 입력하세요</value>

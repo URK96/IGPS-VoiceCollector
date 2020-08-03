@@ -34,5 +34,10 @@ namespace IGPS.Views
 
             await Navigation.PushAsync(new VoiceRecordDetailPage(item));
         }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+        }
     }
 }
