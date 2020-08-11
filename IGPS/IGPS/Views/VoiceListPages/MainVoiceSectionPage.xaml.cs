@@ -4,9 +4,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using IGPS.ViewModels;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using IGPS.Views.VoiceListPages;
 
 namespace IGPS.Views
 {
@@ -16,6 +18,8 @@ namespace IGPS.Views
         public MainVoiceSectionPage()
         {
             InitializeComponent();
+
+            BindingContext = new MainVoiceSectionViewModel();
         }
 
         private async void CollectionView_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -25,11 +29,18 @@ namespace IGPS.Views
                 return;
             }
 
-            var item = e.CurrentSelection.FirstOrDefault() as IGrouping<int, VoiceDataItem>;
+            var item = e.CurrentSelection.FirstOrDefault() as SectionItem;
 
             (sender as CollectionView).SelectedItem = null;
 
-            await Navigation.PushAsync(new MainVoiceListPage(item.ToList()), true);
+            await Navigation.PushAsync(new MainVoiceChapterPage(item.Section), true);
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            (BindingContext as MainVoiceSectionViewModel).CalcProgress();
         }
     }
 }

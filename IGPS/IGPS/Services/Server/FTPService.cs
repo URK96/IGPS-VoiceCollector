@@ -32,9 +32,23 @@ namespace IGPS.Services.Server
                     return true;
                 }
             }
-            catch (WebException ex)
+            catch (Exception)
             {
                 return false;
+            }
+        }
+
+        public static bool CheckFileExist(string path)
+        {
+            var request = CreateRequest(path);
+            request.Method = WebRequestMethods.Ftp.GetFileSize;
+
+            try
+            {
+                using (var response = request.GetResponse())
+                {
+                    return true;
+                }
             }
             catch (Exception)
             {

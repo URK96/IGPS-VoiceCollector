@@ -4,13 +4,8 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="IGPS.Views.MainVoiceSectionPage"
-             xmlns:vm="clr-namespace:IGPS.ViewModels"
+             x:Class="IGPS.Views.VoiceListPages.MainVoiceChapterPage"
              Title="{Binding Title}">
-
-    <ContentPage.BindingContext>
-        <vm:MainVoiceSectionViewModel />
-    </ContentPage.BindingContext>
 
     <ContentPage.Resources>
         <Style TargetType="Grid">
@@ -31,19 +26,19 @@
     </ContentPage.Resources>
 
     <ContentPage.Content>
-        <CollectionView ItemsSource="{Binding SectionGroup}"
+        <CollectionView ItemsSource="{Binding ChapterItems}"
                         ItemsLayout="VerticalList"
-                        SelectionMode="Single"
-                        SelectionChanged="CollectionView_SelectionChanged">
+                        SelectionMode="Single">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <ContentView>
                         <Frame CornerRadius="10" HasShadow="True"
                                Margin="20, 20, 20, 20">
-                            <StackLayout Orientation="Horizontal"
+                            <StackLayout Orientation="Vertical"
                                          HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                                <Label Text="{Binding Key, StringFormat='Section {0}'}" FontSize="Title" FontAttributes="Bold" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" />
-                                <!--<Label Text="{Binding SectionCount, StringFormat='{0}'}" FontSize="Subtitle" HorizontalTextAlignment="End" VerticalTextAlignment="Center" />-->
+                                <Label Text="{Binding Chapter, StringFormat='Section {0}'}" FontSize="Title" FontAttributes="Bold" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" />
+                                <Label Text="{Binding Count, StringFormat='{0} 개'}" FontSize="Subtitle" HorizontalTextAlignment="End" VerticalTextAlignment="Center" />
+                                <Label Text="{Binding Progress, StringFormat='{0}%'}" FontSize="Subtitle" FontAttributes="Bold" HorizontalTextAlignment="End" VerticalTextAlignment="Center" />
                             </StackLayout>
                         </Frame>
                     </ContentView>

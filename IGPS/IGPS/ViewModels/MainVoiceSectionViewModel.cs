@@ -9,24 +9,32 @@ namespace IGPS.ViewModels
 {
     class MainVoiceSectionViewModel : BaseViewModel
     {
-        public List<VoiceDataItem> VoiceList => AppEnvironment.dataService.voiceDataItems;
-        public IEnumerable<IGrouping<int, VoiceDataItem>> SectionGroup => from item in VoiceList group item by item.Section;
-        //public List<string> SectionCount { get; set; }
+        public List<SectionItem> SetionItems { get; set; }
 
         public MainVoiceSectionViewModel()
         {
             Title = AppResources.Main_MenuPage_RecordSection;
 
-            //SectionCount = new List<string>();
-
-            //CalcCount();
+            CreateItems();
         }
 
-        private void CalcCount()
+        private void CreateItems()
         {
-            foreach (var group in SectionGroup)
+            SetionItems = new List<SectionItem>();
+
+            for (int i = 0; i < AppEnvironment.dataService.voiceTextData.Keys.Count; ++i)
             {
-                //SectionCount.Add($"{group.Count(n => n.IsRecorded)} / {group.Count()}");
+                SetionItems.Add(new SectionItem(i + 1));
+            }
+        }
+
+        internal void CalcProgress()
+        {
+            for (int i = 0; i < SetionItems.Count; ++i)
+            {
+                var section = SetionItems[i];
+
+                section.Progress = AppEnvironment.dataService.voiceStatusData[section.Section].Count(n => (n == 3)) / (float)section.Count; 
             }
         }
     }

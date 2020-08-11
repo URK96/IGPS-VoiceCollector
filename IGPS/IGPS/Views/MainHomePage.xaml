@@ -8,10 +8,6 @@
              xmlns:vm="clr-namespace:IGPS.ViewModels"
              Title="{Binding Title}">
 
-    <ContentPage.BindingContext>
-        <vm:MainHomeViewModel />
-    </ContentPage.BindingContext>
-    
     <ContentPage.Content>
         <ScrollView>
             <StackLayout>

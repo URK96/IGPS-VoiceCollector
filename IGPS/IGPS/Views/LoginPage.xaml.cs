@@ -39,13 +39,13 @@ namespace IGPS.Views
             }
         }
 
-        protected override async void OnAppearing()
+        protected override void OnAppearing()
         {
             base.OnAppearing();
 
             AppEnvironment.ToggleLoadingIndicator(LoginIndicator, true);
 
-            await Task.Delay(1000);
+            //await Task.Delay(1000);
 
             CheckLogIn(null, false);
 

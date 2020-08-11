@@ -1,4 +1,5 @@
 ﻿using IGPS.Models;
+using IGPS.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,6 +20,8 @@ namespace IGPS.Views
         public MainHomePage()
         {
             InitializeComponent();
+
+            BindingContext = new MainHomeViewModel();
         }
 
         private async void GoRecordButton_Clicked(object sender, EventArgs e)
@@ -29,6 +32,8 @@ namespace IGPS.Views
         protected override void OnAppearing()
         {
             base.OnAppearing();
+
+            (BindingContext as MainHomeViewModel).CalcProgress();
         }
     }
 }

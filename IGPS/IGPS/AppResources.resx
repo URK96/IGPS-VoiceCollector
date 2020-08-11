@@ -123,6 +123,9 @@
   <data name="Main_MenuPage_Home" xml:space="preserve">
     <value>메인</value>
   </data>
+  <data name="Main_MenuPage_RecordChapter" xml:space="preserve">
+    <value>녹음 챕터 목록</value>
+  </data>
   <data name="Main_MenuPage_RecordList" xml:space="preserve">
     <value>녹음 목록</value>
   </data>
@@ -143,6 +146,13 @@
   </data>
   <data name="Saving" xml:space="preserve">
     <value>저장 중...</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="Section1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Section1.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="Section2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Section2.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="SNSLogin_LoginSuccess" xml:space="preserve">
     <value>로그인에 성공했습니다.</value>
