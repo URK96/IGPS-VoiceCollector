@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using IGPS.Models;
+
 using System.Threading.Tasks;
-using IGPS.Models;
 
 namespace IGPS.Services.Auth
 {

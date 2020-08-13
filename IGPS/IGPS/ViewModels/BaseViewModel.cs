@@ -3,11 +3,6 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-using Xamarin.Forms;
-
-using IGPS.Models;
-using IGPS.Services;
-
 namespace IGPS.ViewModels
 {
     public class BaseViewModel : INotifyPropertyChanged

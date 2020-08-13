@@ -1,11 +1,10 @@
-﻿using System;
-
-using Android.App;
+﻿using Android.App;
 using Android.Content.PM;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
 using Android.OS;
+using Android.Runtime;
+
+using System.Threading.Tasks;
+
 using Xamarin.Essentials;
 
 namespace IGPS.Droid
@@ -26,11 +25,14 @@ namespace IGPS.Droid
             Xamarin.Auth.Presenters.XamarinAndroid.AuthenticationConfiguration.Init(this, savedInstanceState);
             LoadApplication(new App());
 
-            //Permissions.RequestAsync<Permissions.StorageRead>();
-            //Permissions.RequestAsync<Permissions.StorageWrite>();
-            //Permissions.RequestAsync<RecordAudioPermission>();
+            _ = RequestPermissions();
+        }
 
-            RequestPermissions(new string[] { Android.Manifest.Permission.RecordAudio, Android.Manifest.Permission.ModifyAudioSettings }, 0);
+        private async Task RequestPermissions()
+        {
+            await Permissions.RequestAsync<Permissions.StorageRead>();
+            await Permissions.RequestAsync<Permissions.StorageWrite>();
+            await Permissions.RequestAsync<RecordAudioPermission>();
         }
 
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Permission[] grantResults)

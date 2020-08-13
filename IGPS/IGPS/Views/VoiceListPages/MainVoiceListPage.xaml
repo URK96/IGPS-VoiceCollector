@@ -28,7 +28,7 @@
     </ContentPage.Resources>
 
     <ContentPage.Content>
-        <CollectionView ItemsSource="{Binding Items}"
+        <CollectionView ItemsSource="{Binding ListItems}"
                         ItemsLayout="VerticalList"
                         SelectionMode="Single"
                         SelectionChanged="CollectionView_SelectionChanged">

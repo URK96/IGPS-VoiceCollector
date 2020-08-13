@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Windows.Input;
-using IGPS.Models;
+﻿using IGPS.Models;
+
+using System;
 
 using Xamarin.Forms;
 
@@ -10,40 +8,26 @@ namespace IGPS.ViewModels
 {
     class VoiceRecordDetailViewModel : BaseViewModel
     {
-        public VoiceDataItem Item { get; set; }
+        public VoiceListItem Item { get; set; }
 
-        public VoiceRecordDetailViewModel(VoiceDataItem item)
+        public VoiceRecordDetailViewModel(VoiceListItem item)
         {
             Item = item;
 
-            Title = $"Section {Item.Section} - No. {Item.Number}";
+            Title = $"{Item.Section}-{item.Chapter} No. {Item.Number}";
         }
 
         public void UpdateItemInfo(bool isRecorded, bool isUploaded)
         {
-            const string RecordedIndex = "IsRecorded";
-            const string UploadedIndex = "IsUploaded";
+            int statusCode = 0;
 
-            try
-            {
-                int rowIndex = AppEnvironment.dataService.voiceDataTable.Rows.IndexOf(AppEnvironment.dataService.FindDataRow(Item.Section, Item.Number));
+            statusCode += isRecorded ? 1 : 0;
+            statusCode += isUploaded ? 2 : 0;
 
-                AppEnvironment.dataService.voiceDataTable.Rows[rowIndex][RecordedIndex] = isRecorded;
-                AppEnvironment.dataService.voiceDataTable.Rows[rowIndex][UploadedIndex] = isUploaded;
+            AppEnvironment.dataService.voiceStatusData[Item.Section][Item.Index] = statusCode;
 
-                AppEnvironment.dataService.voiceDataTable.AcceptChanges();
-                AppEnvironment.dataService.voiceDataTable.WriteXml(AppEnvironment.dataService.LocalDataFilePath, System.Data.XmlWriteMode.WriteSchema);
-                AppEnvironment.dataService.UpdateItem();
-
-                if (!AppEnvironment.dataService.UploadTable())
-                {
-                    throw new Exception("Cannot upload table");
-                }
-            }
-            catch (Exception ex)
-            {
-                DependencyService.Get<IToast>().Show(ex.ToString());
-            }
+            AppEnvironment.dataService.SaveVoiceStatus();
+            AppEnvironment.dataService.UploadVoiceStatus();
         }
     }
 }

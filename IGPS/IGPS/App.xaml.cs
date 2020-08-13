@@ -1,8 +1,7 @@
-﻿using System;
-using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
-using IGPS.Services;
+﻿using IGPS.Services;
 using IGPS.Views;
+
+using Xamarin.Forms;
 
 namespace IGPS
 {

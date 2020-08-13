@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
+
 using System;
-using System.Collections.Generic;
-using System.Text;
+
 using Xamarin.Essentials;
 
 namespace IGPS.Models
@@ -60,7 +60,7 @@ namespace IGPS.Models
         {
             try
             {
-                Preferences.Set("User", string.Empty);                
+                Preferences.Set("User", string.Empty);
             }
             catch (Exception)
             {

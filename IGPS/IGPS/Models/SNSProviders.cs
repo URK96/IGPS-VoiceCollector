@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace IGPS.Models
+﻿namespace IGPS.Models
 {
     public enum SNSProvider
     {

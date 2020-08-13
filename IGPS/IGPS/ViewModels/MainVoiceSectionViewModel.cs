@@ -1,9 +1,7 @@
 ﻿using IGPS.Models;
-using System;
+
 using System.Collections.Generic;
-using System.Text;
 using System.Linq;
-using System.Windows.Input;
 
 namespace IGPS.ViewModels
 {
@@ -34,7 +32,7 @@ namespace IGPS.ViewModels
             {
                 var section = SetionItems[i];
 
-                section.Progress = AppEnvironment.dataService.voiceStatusData[section.Section].Count(n => (n == 3)) / (float)section.Count; 
+                section.Progress = AppEnvironment.dataService.voiceStatusData[section.Section].Count(n => (n == 3)) / (float)section.Count * 100;
             }
         }
     }

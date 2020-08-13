@@ -1,11 +1,8 @@
 ﻿using IGPS.Services;
 using IGPS.Services.Auth;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using Xamarin.Forms;
+
 using Xamarin.Essentials;
-using System.IO;
+using Xamarin.Forms;
 
 namespace IGPS
 {

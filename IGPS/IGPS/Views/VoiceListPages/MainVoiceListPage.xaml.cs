@@ -1,10 +1,8 @@
 ﻿using IGPS.Models;
 using IGPS.ViewModels;
-using System;
+
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -14,11 +12,11 @@ namespace IGPS.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MainVoiceListPage : ContentPage
     {
-        public MainVoiceListPage(List<VoiceDataItem> list)
+        public MainVoiceListPage(ChapterItem item)
         {
             InitializeComponent();
 
-            BindingContext = new MainVoiceListViewModel(list);
+            BindingContext = new MainVoiceListViewModel(item);
         }
 
         private async void CollectionView_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -28,7 +26,7 @@ namespace IGPS.Views
                 return;
             }
 
-            var item = e.CurrentSelection.FirstOrDefault() as VoiceDataItem;
+            var item = e.CurrentSelection.FirstOrDefault() as VoiceListItem;
 
             (sender as CollectionView).SelectedItem = null;
 
@@ -38,6 +36,8 @@ namespace IGPS.Views
         protected override void OnAppearing()
         {
             base.OnAppearing();
+
+            (BindingContext as MainVoiceListViewModel).SetStatus();
         }
     }
 }

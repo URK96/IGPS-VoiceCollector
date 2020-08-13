@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿
+using IGPS.Models;
+using IGPS.ViewModels;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using IGPS.ViewModels;
 
 namespace IGPS.Views.VoiceListPages
 {
@@ -25,6 +22,20 @@ namespace IGPS.Views.VoiceListPages
             base.OnAppearing();
 
             (BindingContext as MainVoiceChapterViewModel).CalcProgress();
+        }
+
+        private async void CollectionView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (e.CurrentSelection.Count < 1)
+            {
+                return;
+            }
+
+            var item = e.CurrentSelection.FirstOrDefault() as ChapterItem;
+
+            (sender as CollectionView).SelectedItem = null;
+
+            await Navigation.PushAsync(new MainVoiceListPage(item), true);
         }
     }
 }

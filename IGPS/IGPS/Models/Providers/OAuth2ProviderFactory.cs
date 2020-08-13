@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace IGPS.Models.Providers
+﻿namespace IGPS.Models.Providers
 {
     public class OAuth2ProviderFactory
     {

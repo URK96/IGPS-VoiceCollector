@@ -1,7 +1,7 @@
 ﻿
 using IGPS.Models;
 using IGPS.Views.FirstSet;
-using System.Threading.Tasks;
+
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 

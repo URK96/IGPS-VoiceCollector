@@ -1,11 +1,10 @@
-﻿using System;
+﻿using IGPS.Models;
+
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Threading.Tasks;
-using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 
-using IGPS.Models;
+using Xamarin.Forms;
 
 namespace IGPS.Views
 {

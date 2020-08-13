@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Linq;
+﻿using IGPS.Models;
 
-using IGPS.Models;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace IGPS.ViewModels
 {
@@ -24,6 +22,8 @@ namespace IGPS.ViewModels
 
         private void CreateItems()
         {
+            ChapterItems = new List<ChapterItem>();
+
             for (int i = 0; i < 5; ++i)
             {
                 (int start, int end) = (i * 50, (i + 1) * 50 - 1);
@@ -45,7 +45,7 @@ namespace IGPS.ViewModels
             {
                 var item = ChapterItems[i];
 
-                item.Progress = AppEnvironment.dataService.voiceStatusData[item.Section].Skip(item.Range.start).Take(item.Count).Count(n => (n == 3)) / (float)item.Count;
+                item.Progress = AppEnvironment.dataService.voiceStatusData[item.Section].Skip(item.Range.start).Take(item.Count).Count(n => (n == 3)) / (float)item.Count * 100;
             }
         }
     }

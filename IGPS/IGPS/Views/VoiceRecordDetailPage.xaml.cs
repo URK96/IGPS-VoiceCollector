@@ -1,17 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using IGPS.Models;
+using IGPS.Services.Server;
+using IGPS.ViewModels;
+
+using Plugin.AudioRecorder;
+
+using System;
+using System.IO;
 using System.Threading.Tasks;
 
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using IGPS.ViewModels;
-using IGPS.Models;
-using Plugin.AudioRecorder;
-using Xamarin.Essentials;
-using System.IO;
-using IGPS.Services.Server;
 
 namespace IGPS.Views
 {
@@ -21,9 +20,13 @@ namespace IGPS.Views
         private readonly string recordFileName;
         private readonly string recordFilePath;
 
+        private bool isRecorded = false;
+        private bool isUploaded = false;
+        private bool isSuddenStop = false;
+
         private AudioRecorderService recorder;
 
-        public VoiceRecordDetailPage(VoiceDataItem item)
+        public VoiceRecordDetailPage(VoiceListItem item)
         {
             InitializeComponent();
 
@@ -60,9 +63,24 @@ namespace IGPS.Views
             }
         }
 
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+
+            if (recorder.IsRecording)
+            {
+                recorder.StopRecording();
+
+                isSuddenStop = true;
+            }
+        }
+
         private void Recorder_AudioInputReceived(object sender, string audioFile)
         {
-            bool isSuccess = false;
+            if (isSuddenStop)
+            {
+                return;
+            }
 
             try
             {
@@ -74,20 +92,21 @@ namespace IGPS.Views
                     throw new Exception("No recorded file");
                 }
 
-                isSuccess = true;
+                isRecorded = true;
             }
             catch (Exception ex)
             {
                 DependencyService.Get<IToast>().Show(ex.ToString());
+
+                isRecorded = false;
             }
 
-            _ = UploadFile(isSuccess);
+            _ = UploadFile();
         }
 
-        private async Task UploadFile(bool isRecordSuccess)
+        private async Task UploadFile()
         {
             string serverDirPath = AppEnvironment.dataService.ServerUserDataDirPath;
-            bool isSuccess = false;
 
             await Task.Delay(10);
 
@@ -101,9 +120,9 @@ namespace IGPS.Views
                     FTPService.CreateDir(serverDirPath);
                 }
 
-                isSuccess = FTPService.UploadFile(recordFilePath, Path.Combine(serverDirPath, Path.GetFileName(recordFilePath)));
+                isUploaded = FTPService.UploadFile(recordFilePath, Path.Combine(serverDirPath, Path.GetFileName(recordFilePath)));
 
-                if (!isSuccess)
+                if (!isUploaded)
                 {
                     throw new Exception("Cannot upload file");
                 }
@@ -114,13 +133,22 @@ namespace IGPS.Views
             }
             finally
             {
-                UploadButton.IsEnabled = true;
-                UploadButton.Text = isSuccess ? AppResources.ReUpload : AppResources.Upload;
-
                 RecordButton.IsEnabled = true;
                 RecordButton.Text = File.Exists(recordFilePath) ? AppResources.Re_Record : AppResources.Record;
+            }
 
-                (BindingContext as VoiceRecordDetailViewModel).UpdateItemInfo(isRecordSuccess, isSuccess);
+            try
+            {
+                (BindingContext as VoiceRecordDetailViewModel).UpdateItemInfo(isRecorded, isUploaded);
+            }
+            catch (Exception)
+            {
+
+            }
+            finally
+            {
+                UploadButton.IsEnabled = true;
+                UploadButton.Text = isUploaded ? AppResources.ReUpload : AppResources.Upload;
             }
         }
     }

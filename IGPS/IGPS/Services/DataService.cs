@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.IO;
+using System.Text;
 
 using Xamarin.Forms;
 
@@ -44,6 +45,11 @@ namespace IGPS.Services
         {
             string filePath = Path.Combine(LocalDataPath, voiceStatusFile);
             string serverPath = Path.Combine(ServerUserDataDirPath, voiceStatusFile);
+
+            if (!Directory.Exists(LocalDataPath))
+            {
+                Directory.CreateDirectory(LocalDataPath);
+            }
 
             if (!File.Exists(filePath))
             {
@@ -94,7 +100,7 @@ namespace IGPS.Services
 
                     foreach (var value in valueString)
                     {
-                        values.Add(Convert.ToInt32(value));
+                        values.Add(int.Parse(value.ToString()));
                     }
 
                     voiceStatusData.Add(key, values.ToArray());
@@ -104,6 +110,34 @@ namespace IGPS.Services
             {
                 DependencyService.Get<IToast>().Show("Cannot load voice status");
             }
+        }
+
+        public bool SaveVoiceStatus()
+        {
+            string filePath = Path.Combine(LocalDataPath, voiceStatusFile);
+
+            try
+            {
+                var builder = new StringBuilder();
+
+                foreach (var key in voiceStatusData.Keys)
+                {
+                    foreach (var value in voiceStatusData[key])
+                    {
+                        builder.Append(value);
+                    }
+
+                    builder.AppendLine();
+                }
+
+                File.WriteAllText(filePath, builder.ToString());
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+
+            return true;
         }
 
         public bool ListItem()

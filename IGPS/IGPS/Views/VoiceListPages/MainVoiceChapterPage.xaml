@@ -28,7 +28,8 @@
     <ContentPage.Content>
         <CollectionView ItemsSource="{Binding ChapterItems}"
                         ItemsLayout="VerticalList"
-                        SelectionMode="Single">
+                        SelectionMode="Single"
+                        SelectionChanged="CollectionView_SelectionChanged">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <ContentView>
@@ -36,7 +37,7 @@
                                Margin="20, 20, 20, 20">
                             <StackLayout Orientation="Vertical"
                                          HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                                <Label Text="{Binding Chapter, StringFormat='Section {0}'}" FontSize="Title" FontAttributes="Bold" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" />
+                                <Label Text="{Binding Chapter, StringFormat='Chapter {0}'}" FontSize="Title" FontAttributes="Bold" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" />
                                 <Label Text="{Binding Count, StringFormat='{0} 개'}" FontSize="Subtitle" HorizontalTextAlignment="End" VerticalTextAlignment="Center" />
                                 <Label Text="{Binding Progress, StringFormat='{0}%'}" FontSize="Subtitle" FontAttributes="Bold" HorizontalTextAlignment="End" VerticalTextAlignment="Center" />
                             </StackLayout>

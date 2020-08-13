@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 
 namespace IGPS.Models.Providers
-{ 
+{
     [JsonObject]
     public class KakaoUser
     {

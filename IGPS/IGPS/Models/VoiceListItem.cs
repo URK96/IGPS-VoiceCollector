@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Linq;
-
-namespace IGPS.Models
+﻿namespace IGPS.Models
 {
     public class SectionItem
     {
@@ -35,5 +30,16 @@ namespace IGPS.Models
             Count = end - start + 1;
             Progress = 0;
         }
+    }
+
+    public class VoiceListItem
+    {
+        public int Section { get; set; }
+        public int Chapter { get; set; }
+        public int Number { get; set; }
+        public int Index { get; set; }
+        public string VoiceText { get; set; }
+        public bool IsRecorded { get; set; }
+        public bool IsUploaded { get; set; }
     }
 }

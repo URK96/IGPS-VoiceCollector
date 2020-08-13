@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace IGPS.Models
+﻿namespace IGPS.Models
 {
     public class Item
     {
