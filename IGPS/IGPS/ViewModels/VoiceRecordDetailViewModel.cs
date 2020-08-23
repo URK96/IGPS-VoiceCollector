@@ -29,5 +29,17 @@ namespace IGPS.ViewModels
             AppEnvironment.dataService.SaveVoiceStatus();
             AppEnvironment.dataService.UploadVoiceStatus();
         }
+
+        public bool CheckRecordedFile()
+        {
+            try
+            {
+                return AppEnvironment.dataService.voiceStatusData[Item.Section][Item.Index] != 0;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
     }
 }

@@ -4,9 +4,8 @@ namespace IGPS.Models
 {
     public enum FirstSetType
     {
-        Name,
-        Age,
-        Gender
+        Initial,
+        Code
     }
 
     public class FirstSetInfo

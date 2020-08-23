@@ -27,7 +27,7 @@
     </ContentPage.Resources>
 
     <ContentPage.Content>
-        <CollectionView ItemsSource="{Binding SetionItems}"
+        <CollectionView x:Name="ListCollectionView" ItemsSource="{Binding SetionItems}"
                         ItemsLayout="VerticalList"
                         SelectionMode="Single"
                         SelectionChanged="CollectionView_SelectionChanged">

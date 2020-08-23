@@ -26,7 +26,7 @@
     </ContentPage.Resources>
 
     <ContentPage.Content>
-        <CollectionView ItemsSource="{Binding ChapterItems}"
+        <CollectionView x:Name="ListCollectionView" ItemsSource="{Binding ChapterItems}"
                         ItemsLayout="VerticalList"
                         SelectionMode="Single"
                         SelectionChanged="CollectionView_SelectionChanged">

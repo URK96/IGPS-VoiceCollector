@@ -16,21 +16,27 @@
             <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand"
                          AbsoluteLayout.LayoutBounds="0, .1, 1, .1"
                          AbsoluteLayout.LayoutFlags="All">
+                
                 <Label HorizontalOptions="FillAndExpand" 
                        Text="녹음할 내용" HorizontalTextAlignment="Center" FontSize="Title" FontAttributes="Bold" />
 
-                <ScrollView Margin="0, 30, 0, 0">
+                <ScrollView Margin="0, 30, 0, 0" HorizontalOptions="FillAndExpand">
                     <Label Padding="30, 0, 30, 0" 
                            Text="{Binding Item.VoiceText}" FontSize="Large" />
                 </ScrollView>
 
             </StackLayout>
-            
+
+            <Label x:Name="RecordStatusLabel" HorizontalOptions="FillAndExpand" IsVisible="false"
+                   AbsoluteLayout.LayoutBounds="0, .9, 1, .1"
+                   AbsoluteLayout.LayoutFlags="All"
+                   Text="{x:Static local:AppResources.Recording}" TextColor="Red" HorizontalTextAlignment="Center"/>
 
             <Grid AbsoluteLayout.LayoutBounds="0, 1, 1, .1"
                   AbsoluteLayout.LayoutFlags="All"
                   HorizontalOptions="FillAndExpand">
                 <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
                     <ColumnDefinition />
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
@@ -41,7 +47,14 @@
                             Text="{x:Static local:AppResources.Record}"
                             Clicked="RecordButton_Clicked"/>
                 </Frame>
-                <Frame Grid.Row="0" Grid.Column="1" 
+                <Frame Grid.Row="0" Grid.Column="1"
+                       Padding="0">
+                    <Button x:Name="PlayButton" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
+                            BackgroundColor="AliceBlue" 
+                            Text="{x:Static local:AppResources.Play}"
+                            Clicked="PlayButton_Clicked"/>
+                </Frame>
+                <Frame Grid.Row="0" Grid.Column="2" 
                        Padding="0">
                     <Button x:Name="UploadButton" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" 
                             BackgroundColor="AliceBlue" 

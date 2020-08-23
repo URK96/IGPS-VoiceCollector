@@ -135,8 +135,14 @@
   <data name="Main_MenuPage_Setting" xml:space="preserve">
     <value>설정</value>
   </data>
+  <data name="Play" xml:space="preserve">
+    <value>재생</value>
+  </data>
   <data name="Record" xml:space="preserve">
     <value>녹음</value>
+  </data>
+  <data name="Recording" xml:space="preserve">
+    <value>녹음 중...</value>
   </data>
   <data name="ReUpload" xml:space="preserve">
     <value>다시 업로드</value>
@@ -163,6 +169,9 @@
   <data name="SNSLogin_UnknownError" xml:space="preserve">
     <value>문제가 발생하여 로그인할 수 없습니다 :(</value>
   </data>
+  <data name="Stop" xml:space="preserve">
+    <value>정지</value>
+  </data>
   <data name="StopRecord" xml:space="preserve">
     <value>녹음 중지</value>
   </data>
@@ -175,6 +184,9 @@
   <data name="UserFirstSet_AgePage_Title" xml:space="preserve">
     <value>나이를 입력하세요</value>
   </data>
+  <data name="UserFirstSet_CodePage_Title" xml:space="preserve">
+    <value>병원 고유 번호를 입력하세요</value>
+  </data>
   <data name="UserFirstSet_GenderPage_Female" xml:space="preserve">
     <value>여자</value>
   </data>
@@ -184,8 +196,14 @@
   <data name="UserFirstSet_GenderPage_Title" xml:space="preserve">
     <value>성별을 선택하세요</value>
   </data>
+  <data name="UserFirstSet_InitialPage_Title" xml:space="preserve">
+    <value>이름 이니셜을 입력하세요</value>
+  </data>
   <data name="UserFirstSet_InputError_Blank" xml:space="preserve">
     <value>해당 항목을 채워주세요</value>
+  </data>
+  <data name="UserFirstSet_InputError_Count8" xml:space="preserve">
+    <value>숫자 8자리를 입력하세요</value>
   </data>
   <data name="UserFirstSet_InputError_OnlyKorean" xml:space="preserve">
     <value>10자 이하의 한글로 입력해 주세요</value>

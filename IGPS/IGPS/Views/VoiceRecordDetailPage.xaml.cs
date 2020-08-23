@@ -3,10 +3,12 @@ using IGPS.Services.Server;
 using IGPS.ViewModels;
 
 using Plugin.AudioRecorder;
+using Plugin.SimpleAudioPlayer;
 
 using System;
 using System.IO;
 using System.Threading.Tasks;
+using System.Timers;
 
 using Xamarin.Essentials;
 using Xamarin.Forms;
@@ -25,6 +27,9 @@ namespace IGPS.Views
         private bool isSuddenStop = false;
 
         private AudioRecorderService recorder;
+        private ISimpleAudioPlayer audioPlayer;
+
+        private FileStream voiceFileStream;
 
         public VoiceRecordDetailPage(VoiceListItem item)
         {
@@ -34,6 +39,16 @@ namespace IGPS.Views
             recordFilePath = Path.Combine(AppEnvironment.appDataPath, AppEnvironment.authService.AuthenticatedUser.GetUserString(), recordFileName);
 
             BindingContext = new VoiceRecordDetailViewModel(item);
+
+            UpdateButtonStatus();
+        }
+
+        private void UpdateButtonStatus()
+        {
+            bool hasRecordedFile = (BindingContext as VoiceRecordDetailViewModel).CheckRecordedFile();
+
+            PlayButton.IsEnabled = hasRecordedFile;
+            RecordButton.Text = hasRecordedFile ? AppResources.Re_Record : AppResources.Record;
         }
 
         private void RecordButton_Clicked(object sender, EventArgs e)
@@ -45,7 +60,7 @@ namespace IGPS.Views
                     FilePath = recordFilePath,
                     StopRecordingOnSilence = false,
                     StopRecordingAfterTimeout = true,
-                    TotalAudioTimeout = TimeSpan.FromMinutes(Preferences.Get(AppSettingKeys.RecordTimeOut, 5))
+                    TotalAudioTimeout = TimeSpan.FromMinutes(Preferences.Get(AppSettingKeys.RecordTimeOut, 5)),
                 };
 
                 recorder.AudioInputReceived += Recorder_AudioInputReceived;
@@ -54,12 +69,16 @@ namespace IGPS.Views
             if (recorder.IsRecording)
             {
                 recorder.StopRecording();
+
+                RecordStatusLabel.IsVisible = false;
             }
             else
             {
                 RecordButton.Text = AppResources.StopRecord;
 
                 recorder.StartRecording();
+
+                RecordStatusLabel.IsVisible = true;
             }
         }
 
@@ -67,7 +86,7 @@ namespace IGPS.Views
         {
             base.OnDisappearing();
 
-            if (recorder.IsRecording)
+            if ((bool)recorder?.IsRecording)
             {
                 recorder.StopRecording();
 
@@ -143,12 +162,67 @@ namespace IGPS.Views
             }
             catch (Exception)
             {
-
+                DependencyService.Get<IToast>().Show("Cannot update info");
             }
             finally
             {
                 UploadButton.IsEnabled = true;
                 UploadButton.Text = isUploaded ? AppResources.ReUpload : AppResources.Upload;
+
+                UpdateButtonStatus();
+            }
+        }
+
+        private void PlayButton_Clicked(object sender, EventArgs e)
+        {
+            try
+            {
+                if (audioPlayer == null)
+                {
+                    audioPlayer = CrossSimpleAudioPlayer.Current;
+                }
+
+                if (audioPlayer.IsPlaying)
+                {
+                    audioPlayer.Stop();
+
+                    RecordButton.IsEnabled = true;
+                    UploadButton.IsEnabled = true;
+
+                    PlayButton.Text = AppResources.Play;
+                }
+                else
+                {
+                    if (!File.Exists(recordFilePath))
+                    {
+                        if (!FTPService.DownloadFile(AppEnvironment.dataService.ServerUserDataDirPath, recordFilePath))
+                        {
+                            throw new Exception("Cannot download record file");
+                        }
+                    }
+
+                    voiceFileStream?.Close();
+                    voiceFileStream = new FileStream(recordFilePath, FileMode.Open, FileAccess.Read);
+
+                    audioPlayer.Load(voiceFileStream);
+                    audioPlayer.Play();
+                    audioPlayer.PlaybackEnded += delegate
+                    {
+                        RecordButton.IsEnabled = true;
+                        UploadButton.IsEnabled = true;
+
+                        PlayButton.Text = AppResources.Play;
+                    };
+
+                    RecordButton.IsEnabled = false;
+                    UploadButton.IsEnabled = false;
+
+                    PlayButton.Text = AppResources.Stop;
+                }
+            }
+            catch (Exception ex)
+            {
+                DependencyService.Get<IToast>().Show(ex.ToString());
             }
         }
     }

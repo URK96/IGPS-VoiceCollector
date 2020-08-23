@@ -26,7 +26,7 @@ namespace IGPS.Views
                 if (!AppEnvironment.authService.AuthenticatedUser.FirstSetCompleted)
                 {
                     Application.Current.MainPage = new NavigationPage();
-                    Application.Current.MainPage.Navigation.PushAsync(new NamePage(), true);
+                    Application.Current.MainPage.Navigation.PushAsync(new InitialPage(), true);
                 }
                 else
                 {

@@ -115,6 +115,15 @@ namespace IGPS {
         }
         
         /// <summary>
+        ///   재생과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string Play {
+            get {
+                return ResourceManager.GetString("Play", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   다시 녹음과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string Re_Record {
@@ -129,6 +138,15 @@ namespace IGPS {
         internal static string Record {
             get {
                 return ResourceManager.GetString("Record", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   녹음 중...과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string Recording {
+            get {
+                return ResourceManager.GetString("Recording", resourceCulture);
             }
         }
         
@@ -417,6 +435,15 @@ namespace IGPS {
         }
         
         /// <summary>
+        ///   정지과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string Stop {
+            get {
+                return ResourceManager.GetString("Stop", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   녹음 중지과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string StopRecord {
@@ -453,6 +480,15 @@ namespace IGPS {
         }
         
         /// <summary>
+        ///   병원 고유 번호를 입력하세요과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string UserFirstSet_CodePage_Title {
+            get {
+                return ResourceManager.GetString("UserFirstSet_CodePage_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   여자과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string UserFirstSet_GenderPage_Female {
@@ -480,11 +516,29 @@ namespace IGPS {
         }
         
         /// <summary>
+        ///   이름 이니셜을 입력하세요과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string UserFirstSet_InitialPage_Title {
+            get {
+                return ResourceManager.GetString("UserFirstSet_InitialPage_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   해당 항목을 채워주세요과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string UserFirstSet_InputError_Blank {
             get {
                 return ResourceManager.GetString("UserFirstSet_InputError_Blank", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   숫자 8자리를 입력하세요과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string UserFirstSet_InputError_Count8 {
+            get {
+                return ResourceManager.GetString("UserFirstSet_InputError_Count8", resourceCulture);
             }
         }
         

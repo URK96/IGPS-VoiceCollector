@@ -14,7 +14,9 @@ namespace IGPS.Models
         public DateTime ExpiresIn { get; set; }
         public string Name { get; set; }
         public string LastName { get; set; }
+        public string Initial { get; set; }
         public int Age { get; set; }
+        public int Code { get; set; }
         public GenderType Gender { get; set; }
         public string Email { get; set; }
         public string PictureUrl { get; set; }
@@ -68,6 +70,6 @@ namespace IGPS.Models
             }
         }
 
-        public string GetUserString() => $"{Provider}_{Id}_{Name}";
+        public string GetUserString() => $"{Provider}_{Id}_{Initial}_{Code}";
     }
 }

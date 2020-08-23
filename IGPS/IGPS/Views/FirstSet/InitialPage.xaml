@@ -4,7 +4,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="IGPS.Views.FirstSet.AgePage"
+             x:Class="IGPS.Views.FirstSet.InitialPage"
              xmlns:local="clr-namespace:IGPS"
              xmlns:vm="clr-namespace:IGPS.ViewModels"
              NavigationPage.HasNavigationBar="False">
@@ -15,26 +15,26 @@
     
     <ContentPage.Content>
         <AbsoluteLayout>
-
+            
             <StackLayout Orientation="Vertical" HorizontalOptions="Center"
                          AbsoluteLayout.LayoutBounds="0, .1, 1, .3"
                          AbsoluteLayout.LayoutFlags="All">
-                <Label x:Name="FirstSetAgeTitle" FontSize="Title" HorizontalTextAlignment="Center"
-                       Text="{x:Static local:AppResources.UserFirstSet_AgePage_Title}" />
-                <Entry x:Name="FirstSetAgeInput" Keyboard="Numeric" MaxLength="3" HorizontalTextAlignment="Center"
+                <Label x:Name="FirstSetInitialTitle" FontSize="Title" HorizontalTextAlignment="Center"
+                       Text="{x:Static local:AppResources.UserFirstSet_InitialPage_Title}" />
+                <Entry x:Name="FirstSetInitialInput" Keyboard="Text" MaxLength="10" HorizontalTextAlignment="Center"
                        Margin="0, 20, 0, 0"
-                       TextChanged="FirstSetAgeInput_TextChanged" />
-                <Label x:Name="FirstSetAgeInputStatus" IsVisible="false" 
-                       Text="{x:Static local:AppResources.UserFirstSet_InputError_Blank}" TextColor="Red" FontSize="Caption" HorizontalTextAlignment="Center" />
+                       TextChanged="FirstSetInitialInput_TextChanged" />
+                <Label x:Name="FirstSetInitialInputStatus" IsVisible="false"
+                       Text="{x:Static local:AppResources.UserFirstSet_InputError_OnlyKorean}" TextColor="Red" FontSize="Caption" HorizontalTextAlignment="Center"/>
             </StackLayout>
 
-            <Button x:Name="FirstSetAgeNextButton" 
+            <Button x:Name="FirstSetInitialNextButton" IsEnabled="false"
                     Text="{x:Static local:AppResources.UserFirstSet_NextButton_Next}" FontSize="Large" TextColor="White"
                     AbsoluteLayout.LayoutBounds=".5, .75, .7, .08"
                     AbsoluteLayout.LayoutFlags="All"
                     Command="{Binding SaveInput}" CommandParameter="{Binding SetInfo}"
-                    Clicked="FirstSetAgeNextButton_Clicked" />
+                    Clicked="FirstSetInitialNextButton_Clicked"/>
         </AbsoluteLayout>
     </ContentPage.Content>
-    
+
 </ContentPage>

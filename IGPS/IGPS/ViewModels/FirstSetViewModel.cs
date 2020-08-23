@@ -24,14 +24,11 @@ namespace IGPS.ViewModels
 
             switch (info.Type)
             {
-                case FirstSetType.Name:
-                    user.Name = (info.DataView as Entry).Text;
+                case FirstSetType.Initial:
+                    user.Initial = (info.DataView as Entry).Text;
                     break;
-                case FirstSetType.Age:
-                    user.Age = int.Parse((info.DataView as Entry).Text);
-                    break;
-                case FirstSetType.Gender:
-                    user.Gender = (info.DataView as RadioButton).Text == AppResources.UserFirstSet_GenderPage_Male ? GenderType.Male : GenderType.Female;
+                case FirstSetType.Code:
+                    user.Code = int.Parse((info.DataView as Entry).Text);
                     user.FirstSetCompleted = true;
                     break;
                 default:

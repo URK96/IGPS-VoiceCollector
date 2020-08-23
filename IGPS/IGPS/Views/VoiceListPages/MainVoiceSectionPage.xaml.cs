@@ -38,6 +38,9 @@ namespace IGPS.Views
             base.OnAppearing();
 
             (BindingContext as MainVoiceSectionViewModel).CalcProgress();
+
+            ListCollectionView.ItemsSource = null;
+            ListCollectionView.ItemsSource = (BindingContext as MainVoiceSectionViewModel).SetionItems;
         }
     }
 }

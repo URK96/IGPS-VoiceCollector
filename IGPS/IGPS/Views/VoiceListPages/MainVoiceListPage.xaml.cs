@@ -38,6 +38,9 @@ namespace IGPS.Views
             base.OnAppearing();
 
             (BindingContext as MainVoiceListViewModel).SetStatus();
+
+            ListCollectionView.ItemsSource = null;
+            ListCollectionView.ItemsSource = (BindingContext as MainVoiceListViewModel).ListItems;
         }
     }
 }

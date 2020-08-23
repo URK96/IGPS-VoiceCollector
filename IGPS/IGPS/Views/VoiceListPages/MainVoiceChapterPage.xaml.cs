@@ -22,6 +22,9 @@ namespace IGPS.Views.VoiceListPages
             base.OnAppearing();
 
             (BindingContext as MainVoiceChapterViewModel).CalcProgress();
+
+            ListCollectionView.ItemsSource = null;
+            ListCollectionView.ItemsSource = (BindingContext as MainVoiceChapterViewModel).ChapterItems;
         }
 
         private async void CollectionView_SelectionChanged(object sender, SelectionChangedEventArgs e)

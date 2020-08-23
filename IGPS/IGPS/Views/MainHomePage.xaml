@@ -15,7 +15,7 @@
                        Text="{Binding User.Name, StringFormat='{0}님의 진행 정보'}" FontSize="Title" HorizontalTextAlignment="Center" />
                 
                 <StackLayout Orientation="Vertical" Margin="0, 100, 0, 0">
-                    <Label Text="{Binding ConvertProgress, StringFormat='{0:F1}% 완료'}" HorizontalTextAlignment="Center" FontSize="Large" />
+                    <Label Text="{Binding ConvertProgress, StringFormat='{0:F2}% 완료'}" HorizontalTextAlignment="Center" FontSize="Large" />
                     <ProgressBar x:Name="MainProgressBar" 
                                  WidthRequest="300" HorizontalOptions="Center"
                                  Progress="{Binding Progress}"/>
