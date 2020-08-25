@@ -142,6 +142,15 @@ namespace IGPS {
         }
         
         /// <summary>
+        ///   녹음에 실패했습니다. 다시 녹음 해 주세요.과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string RecordFail_Rerecord {
+            get {
+                return ResourceManager.GetString("RecordFail_Rerecord", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   녹음 중...과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string Recording {
@@ -462,6 +471,15 @@ namespace IGPS {
         }
         
         /// <summary>
+        ///   업로드에 실패했습니다. 버튼을 눌러 다시 업로드를 시도 해 주세요.과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string UploadFail_ReUpload {
+            get {
+                return ResourceManager.GetString("UploadFail_ReUpload", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   업로드 중...과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string Uploading {
@@ -575,6 +593,80 @@ namespace IGPS {
         internal static string UserFirstSet_NextButton_Next {
             get {
                 return ResourceManager.GetString("UserFirstSet_NextButton_Next", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   개인별 초기 음성 보정 단계를 진행합니다. 
+        ///본 단계는 음성 분석을 위한 중요한 단계이니 신중하게 녹음해주시기 바랍니다.과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string VoiceFirstSet_Info_Message {
+            get {
+                return ResourceManager.GetString("VoiceFirstSet_Info_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   초기 음성 보정과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string VoiceFirstSet_Info_Title {
+            get {
+                return ResourceManager.GetString("VoiceFirstSet_Info_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   완료과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string VoiceFirstSet_NextButton_Finish {
+            get {
+                return ResourceManager.GetString("VoiceFirstSet_NextButton_Finish", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   다음 단계로과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string VoiceFirstSet_NextButton_Next {
+            get {
+                return ResourceManager.GetString("VoiceFirstSet_NextButton_Next", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   녹음 버튼을 누르고 아래 단어를 10초간 발음하여
+        ///3회 녹음하세요.과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string VoiceFirstSet_Title {
+            get {
+                return ResourceManager.GetString("VoiceFirstSet_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   아과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string VoiceFirstSet_VoiceText_1 {
+            get {
+                return ResourceManager.GetString("VoiceFirstSet_VoiceText_1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   이과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string VoiceFirstSet_VoiceText_2 {
+            get {
+                return ResourceManager.GetString("VoiceFirstSet_VoiceText_2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   우과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string VoiceFirstSet_VoiceText_3 {
+            get {
+                return ResourceManager.GetString("VoiceFirstSet_VoiceText_3", resourceCulture);
             }
         }
     }

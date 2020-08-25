@@ -23,6 +23,7 @@ namespace IGPS.Models
         public bool LoggedInWithSNSAccount { get; set; }
         public SNSProvider Provider { get; set; }
         public bool FirstSetCompleted { get; set; }
+        public bool FirstVoiceSetCompleted { get; set; }
 
         public void SaveUserInfo()
         {

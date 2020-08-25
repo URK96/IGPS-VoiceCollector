@@ -52,9 +52,7 @@ namespace IGPS.Droid
 
         public override void OnBackPressed()
         {
-            
-
-            if (exitTimer.Enabled)
+            /*if (exitTimer.Enabled)
             {
                 base.OnBackPressed();
             }
@@ -63,7 +61,7 @@ namespace IGPS.Droid
                 Toast.MakeText(this, "앱을 종료하려면 뒤로가기를 다시 눌러주세요.", ToastLength.Short).Show();
 
                 exitTimer.Start();
-            }
+            }*/
         }
     }
 }

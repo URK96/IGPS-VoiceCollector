@@ -1,6 +1,7 @@
 ﻿
 using IGPS.Models;
 using IGPS.Views.FirstSet;
+using IGPS.Views.FirstVoiceSet;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -27,6 +28,11 @@ namespace IGPS.Views
                 {
                     Application.Current.MainPage = new NavigationPage();
                     Application.Current.MainPage.Navigation.PushAsync(new InitialPage(), true);
+                }
+                else if (!AppEnvironment.authService.AuthenticatedUser.FirstVoiceSetCompleted)
+                {
+                    Application.Current.MainPage = new NavigationPage();
+                    Application.Current.MainPage.Navigation.PushAsync(new FirstVoiceSetInfoPage(), true);
                 }
                 else
                 {

@@ -14,7 +14,10 @@ namespace IGPS.ViewModels
         {
             Title = AppResources.Main_MenuPage_Home;
 
-            AppEnvironment.dataService = new Services.DataService();
+            if (AppEnvironment.dataService != null)
+            {
+                AppEnvironment.dataService = new Services.DataService();
+            }
         }
 
         internal void CalcProgress()

@@ -141,6 +141,9 @@
   <data name="Record" xml:space="preserve">
     <value>녹음</value>
   </data>
+  <data name="RecordFail_Rerecord" xml:space="preserve">
+    <value>녹음에 실패했습니다. 다시 녹음 해 주세요.</value>
+  </data>
   <data name="Recording" xml:space="preserve">
     <value>녹음 중...</value>
   </data>
@@ -177,6 +180,9 @@
   </data>
   <data name="Upload" xml:space="preserve">
     <value>업로드</value>
+  </data>
+  <data name="UploadFail_ReUpload" xml:space="preserve">
+    <value>업로드에 실패했습니다. 버튼을 눌러 다시 업로드를 시도 해 주세요.</value>
   </data>
   <data name="Uploading" xml:space="preserve">
     <value>업로드 중...</value>
@@ -216,5 +222,31 @@
   </data>
   <data name="UserFirstSet_NextButton_Next" xml:space="preserve">
     <value>다음 단계로</value>
+  </data>
+  <data name="VoiceFirstSet_Info_Message" xml:space="preserve">
+    <value>개인별 초기 음성 보정 단계를 진행합니다. 
+본 단계는 음성 분석을 위한 중요한 단계이니 신중하게 녹음해주시기 바랍니다.</value>
+  </data>
+  <data name="VoiceFirstSet_Info_Title" xml:space="preserve">
+    <value>초기 음성 보정</value>
+  </data>
+  <data name="VoiceFirstSet_NextButton_Finish" xml:space="preserve">
+    <value>완료</value>
+  </data>
+  <data name="VoiceFirstSet_NextButton_Next" xml:space="preserve">
+    <value>다음 단계로</value>
+  </data>
+  <data name="VoiceFirstSet_Title" xml:space="preserve">
+    <value>녹음 버튼을 누르고 아래 단어를 10초간 발음하여
+3회 녹음하세요.</value>
+  </data>
+  <data name="VoiceFirstSet_VoiceText_1" xml:space="preserve">
+    <value>아</value>
+  </data>
+  <data name="VoiceFirstSet_VoiceText_2" xml:space="preserve">
+    <value>이</value>
+  </data>
+  <data name="VoiceFirstSet_VoiceText_3" xml:space="preserve">
+    <value>우</value>
   </data>
 </root>

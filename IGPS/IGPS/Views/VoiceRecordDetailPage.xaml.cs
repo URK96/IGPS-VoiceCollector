@@ -84,14 +84,14 @@ namespace IGPS.Views
 
         protected override void OnDisappearing()
         {
-            base.OnDisappearing();
-
-            if ((bool)recorder?.IsRecording)
+            if (recorder?.IsRecording != null)
             {
                 recorder.StopRecording();
 
                 isSuddenStop = true;
             }
+
+            base.OnDisappearing();
         }
 
         private void Recorder_AudioInputReceived(object sender, string audioFile)

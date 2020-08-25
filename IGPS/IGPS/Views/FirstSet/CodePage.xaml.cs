@@ -1,5 +1,6 @@
 ﻿using IGPS.Models;
 using IGPS.ViewModels;
+using IGPS.Views.FirstVoiceSet;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -56,7 +57,7 @@ namespace IGPS.Views.FirstSet
 
         private void FirstSetCodeNextButton_Clicked(object sender, EventArgs e)
         {
-            Application.Current.MainPage = new MainPage();
+            Application.Current.MainPage = new FirstVoiceSetInfoPage();
         }
     }
 }
