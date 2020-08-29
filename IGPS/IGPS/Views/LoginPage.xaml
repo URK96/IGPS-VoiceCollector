@@ -6,7 +6,8 @@
              mc:Ignorable="d"
              x:Class="IGPS.Views.LoginPage"
              xmlns:models="clr-namespace:IGPS.Models"
-             xmlns:vm="clr-namespace:IGPS.ViewModels">
+             xmlns:vm="clr-namespace:IGPS.ViewModels"
+             xmlns:local="clr-namespace:IGPS">
 
     <ContentPage.BindingContext>
         <vm:LoginViewModel />
@@ -17,27 +18,16 @@
             <Label Text="Voice Collector에 오신 걸 환영합니다" HorizontalTextAlignment="Center" FontSize="Title"
                    AbsoluteLayout.LayoutBounds=".5, .3, 1, .5"
                    AbsoluteLayout.LayoutFlags="All"/>
-            
-            <StackLayout x:Name="SNSLoginMethodLayout" 
-                         Orientation="Vertical" HorizontalOptions="Center" VerticalOptions="Center" IsVisible="false"
-                         AbsoluteLayout.LayoutBounds=".5, .7, 1, .6"
-                         AbsoluteLayout.LayoutFlags="All">
-                <Label Text="로그인 방식을 선택하세요" FontSize="Large" HorizontalTextAlignment="Center"
-                       Margin="0, 0, 0, 20" />
-                <ImageButton x:Name="KakaoLoginButton"
-                             Command="{Binding SNSSignInCommand}" CommandParameter="{x:Static models:SNSProvider.Kakao}">
-                    <ImageButton.Source>
-                        <OnPlatform x:TypeArguments="ImageSource">
-                            <On Platform="iOS, Android" Value="kakao_login_narrow.png" />
-                            <On Platform="UWP" Value="Assets/kakao_login_narrow.png" />
-                        </OnPlatform>
-                    </ImageButton.Source>
-                </ImageButton>
-            </StackLayout>
+
+            <Button x:Name="LoginNextButton" BackgroundColor="OrangeRed" IsVisible="False"
+                    Text="{x:Static local:AppResources.Login_ButtonText}" FontSize="Large" TextColor="White"
+                    AbsoluteLayout.LayoutBounds=".5, .75, .7, .08"
+                    AbsoluteLayout.LayoutFlags="All"
+                    Clicked="LoginNextButton_Clicked"/>
 
             <ActivityIndicator x:Name="LoginIndicator" IsRunning="false"
-                           AbsoluteLayout.LayoutBounds=".5, .5, .2, .2"
-                           AbsoluteLayout.LayoutFlags="All"/>
+                               AbsoluteLayout.LayoutBounds=".5, .5, .2, .2"
+                               AbsoluteLayout.LayoutFlags="All"/>
 
         </AbsoluteLayout>
     </ContentPage.Content>

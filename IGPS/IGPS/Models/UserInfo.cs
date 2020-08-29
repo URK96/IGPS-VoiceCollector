@@ -71,6 +71,6 @@ namespace IGPS.Models
             }
         }
 
-        public string GetUserString() => $"{Provider}_{Id}_{Initial}_{Code}";
+        public string GetUserString() => $"{Initial}_{Code}";
     }
 }

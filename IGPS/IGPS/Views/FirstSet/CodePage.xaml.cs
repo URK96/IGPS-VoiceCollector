@@ -57,7 +57,7 @@ namespace IGPS.Views.FirstSet
 
         private void FirstSetCodeNextButton_Clicked(object sender, EventArgs e)
         {
-            Application.Current.MainPage = new FirstVoiceSetInfoPage();
+            Application.Current.MainPage = new MainPage();
         }
     }
 }

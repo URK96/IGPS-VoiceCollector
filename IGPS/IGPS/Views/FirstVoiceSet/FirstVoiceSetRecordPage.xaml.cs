@@ -1,7 +1,9 @@
-﻿using IGPS.Services.Server;
+﻿using IGPS.Models;
+using IGPS.Services.Server;
 using IGPS.ViewModels;
 
 using Plugin.AudioRecorder;
+using Plugin.SimpleAudioPlayer;
 
 using System;
 using System.IO;
@@ -10,40 +12,44 @@ using System.Timers;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Plugin.SimpleAudioRecorder;
 
 namespace IGPS.Views.FirstVoiceSet
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class FirstVoiceSetRecordPage : ContentPage
     {
-        private string recordFileName;
+        private readonly string recordFileName;
         private readonly string recordPath;
-        private string recordFilePath;
+        private readonly string recordFilePath;
 
-        private bool isSuddenStop = false;
         private bool isRecorded = false;
         private bool isUploaded = true;
-
+        private bool isSuddenStop = false;
+        
         private int secCount = 0;
 
         private AudioRecorderService recorder;
+        private ISimpleAudioPlayer audioPlayer;
 
-        private FirstVoiceSetRecordViewModel context;
+        private FileStream voiceFileStream;
 
         private Timer timeTimer;
 
-        public FirstVoiceSetRecordPage()
+        public FirstVoiceSetRecordPage(VoiceListItem item)
         {
             InitializeComponent();
 
-            BindingContext = context = new FirstVoiceSetRecordViewModel();
-
-            recordFileName = $"F{context.Stage}_{context.Count}.mp3";
+            recordFileName = $"{item.Chapter}_{item.Number}.mp3";
             recordPath = Path.Combine(AppEnvironment.appDataPath, AppEnvironment.authService.AuthenticatedUser.GetUserString());
             recordFilePath = Path.Combine(recordPath, recordFileName);
 
-            timeTimer = new Timer(1000);
-            timeTimer.AutoReset = true;
+            BindingContext = new FirstVoiceSetRecordViewModel(item);
+
+            timeTimer = new Timer(1000)
+            {
+                AutoReset = true
+            };
             timeTimer.Elapsed += delegate
             {
                 RecordCountProgressBar.Progress = secCount++ / 10.0;
@@ -54,11 +60,13 @@ namespace IGPS.Views.FirstVoiceSet
                     MainThread.BeginInvokeOnMainThread(() => { recorder.StopRecording(); });
                 }
             };
+
+            UpdateButtonStatus();
         }
 
         protected override void OnDisappearing()
         {
-            if (recorder?.IsRecording != null)
+            if ((recorder != null) && recorder.IsRecording)
             {
                 recorder.StopRecording();
 
@@ -70,17 +78,10 @@ namespace IGPS.Views.FirstVoiceSet
 
         private void UpdateButtonStatus()
         {
-            RecordButton.IsEnabled = false;
-            UploadButton.IsEnabled = false;
-            FirstVoiceSetRecordNextButton.BackgroundColor = Color.OrangeRed;
-            FirstVoiceSetRecordNextButton.IsEnabled = true;
-        }
+            bool hasRecordedFile = (BindingContext as FirstVoiceSetRecordViewModel).CheckRecordedFile();
 
-        private void UpdatePath()
-        {
-            recordFileName = $"F{context.Stage}_{context.Count}.mp3";
-            recordFilePath = Path.Combine(recordPath, recordFileName);
-            recorder.FilePath = recordFilePath;
+            PlayButton.IsEnabled = hasRecordedFile;
+            RecordButton.Text = hasRecordedFile ? AppResources.Re_Record : AppResources.Record;
         }
 
         private void RecordButton_Clicked(object sender, EventArgs e)
@@ -107,8 +108,8 @@ namespace IGPS.Views.FirstVoiceSet
                 RecordButton.Text = $"{AppResources.Recording}";
                 RecordButton.IsEnabled = false;
                 RecordStatusLabel.IsVisible = true;
+                RecordCountProgressBar.Progress = 0;
                 RecordCountProgressBar.IsVisible = true;
-                isRecorded = false;
 
                 timeTimer.Start();
             }
@@ -136,7 +137,9 @@ namespace IGPS.Views.FirstVoiceSet
             }
             catch (Exception ex)
             {
+#if DEBUG
                 DependencyService.Get<IToast>().Show(ex.ToString());
+#endif
                 DependencyService.Get<IToast>().Show(AppResources.RecordFail_Rerecord);
 
                 isRecorded = false;
@@ -150,17 +153,7 @@ namespace IGPS.Views.FirstVoiceSet
                 secCount = 0;
             }
 
-            if ((context.Count == 3) && isRecorded)
-            {
-                UploadFile();
-            }
-            else if (isRecorded)
-            {
-                context.Count += 1;
-                RecordCountLabel.Text = $"{context.Count} / 3";
-
-                UpdatePath();
-            }
+            UploadFile();
         }
 
         private void UploadFile()
@@ -179,20 +172,12 @@ namespace IGPS.Views.FirstVoiceSet
 
                 isUploaded = true;
 
-                for (int i = 1; (i <= context.Count) && isUploaded; ++i)
-                {
-                    string fileName = $"F{context.Stage}_{i}.mp3";
-                    string filePath = Path.Combine(recordPath, fileName);
-
-                    isUploaded = FTPService.UploadFile(filePath, Path.Combine(serverDirPath, Path.GetFileName(fileName)));
-                }
+                isUploaded = FTPService.UploadFile(recordFilePath, Path.Combine(serverDirPath, Path.GetFileName(recordFileName)));
 
                 if (!isUploaded)
                 {
                     throw new Exception("Cannot upload file");
                 }
-
-                UpdateButtonStatus();
             }
             catch (Exception ex)
             {
@@ -204,6 +189,26 @@ namespace IGPS.Views.FirstVoiceSet
             finally
             {
                 UploadButton.Text = AppResources.Upload;
+                RecordButton.IsEnabled = true;
+                RecordButton.Text = File.Exists(recordFilePath) ? AppResources.Re_Record : AppResources.Record;
+            }
+
+            try
+            {
+                (BindingContext as FirstVoiceSetRecordViewModel).UpdateItemInfo(isRecorded, isUploaded);
+            }
+            catch (Exception)
+            {
+                DependencyService.Get<IToast>().Show("Cannot update info");
+            }
+            finally
+            {
+                UploadButton.IsEnabled = true;
+                UploadButton.Text = isUploaded ? AppResources.ReUpload : AppResources.Upload;
+
+                UpdateButtonStatus();
+
+                recorder = null;
             }
         }
 
@@ -212,35 +217,60 @@ namespace IGPS.Views.FirstVoiceSet
             UploadFile();
         }
 
-        private void FirstVoiceSetRecordNextButton_Clicked(object sender, EventArgs e)
+        private void PlayButton_Clicked(object sender, EventArgs e)
         {
-            if (context.Stage == 3)
+            try
             {
-                Application.Current.MainPage = new MainPage();
-            }
-            else
-            {
-                switch (context.Stage)
+                if (audioPlayer == null)
                 {
-                    case 1:
-                        context.Stage = 2;
-                        context.Count = 1;
-                        FirstVoiceSetRecordText.Text = AppResources.VoiceFirstSet_VoiceText_2;
-                        break;
-                    case 2:
-                        context.Stage = 3;
-                        context.Count = 1;
-                        FirstVoiceSetRecordText.Text = AppResources.VoiceFirstSet_VoiceText_3;
-                        FirstVoiceSetRecordNextButton.Text = AppResources.VoiceFirstSet_NextButton_Finish;
-                        break;
+                    audioPlayer = CrossSimpleAudioPlayer.Current;
                 }
 
-                RecordCountLabel.Text = $"{context.Count} / 3";
-                FirstVoiceSetRecordNextButton.BackgroundColor = Color.Default;
-                FirstVoiceSetRecordNextButton.IsEnabled = false;
-                RecordButton.IsEnabled = true;
+                if (audioPlayer.IsPlaying)
+                {
+                    audioPlayer.Stop();
 
-                UpdatePath();
+                    RecordButton.IsEnabled = true;
+                    UploadButton.IsEnabled = true;
+
+                    PlayButton.Text = AppResources.Play;
+
+                    voiceFileStream?.Close();
+                }
+                else
+                {
+                    if (!File.Exists(recordFilePath))
+                    {
+                        if (!FTPService.DownloadFile(AppEnvironment.dataService.ServerUserDataDirPath, recordFilePath))
+                        {
+                            throw new Exception("Cannot download record file");
+                        }
+                    }
+
+                    voiceFileStream?.Close();
+                    voiceFileStream = new FileStream(recordFilePath, FileMode.Open, FileAccess.Read);
+
+                    audioPlayer.Load(voiceFileStream);
+                    audioPlayer.Play();
+                    audioPlayer.PlaybackEnded += delegate
+                    {
+                        RecordButton.IsEnabled = true;
+                        UploadButton.IsEnabled = true;
+
+                        PlayButton.Text = AppResources.Play;
+
+                        voiceFileStream?.Close();
+                    };
+
+                    RecordButton.IsEnabled = false;
+                    UploadButton.IsEnabled = false;
+
+                    PlayButton.Text = AppResources.Stop;
+                }
+            }
+            catch (Exception ex)
+            {
+                DependencyService.Get<IToast>().Show(ex.ToString());
             }
         }
     }

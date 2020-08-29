@@ -20,17 +20,21 @@ namespace IGPS.Services
         public string ServerUserDataDirPath => Path.Combine(AppEnvironment.ftpRootPath, "UserData", User.GetUserString());
         readonly string serverFile = "VoiceData.xml";
         readonly string voiceStatusFile = "VoiceStatus.txt";
+        readonly string firstVoiceSetStatusFile = "FirstVoiceStatus.txt";
 
-        public DataTable voiceDataTable = null;
-        public List<VoiceDataItem> voiceDataItems;
+        //public DataTable voiceDataTable = null;
+        //public List<VoiceDataItem> voiceDataItems;
         public Dictionary<int, string[]> voiceTextData; // Section, Data List
         public Dictionary<int, int[]> voiceStatusData;
+        public List<int> firstVoiceSetStatusData;
 
         public DataService()
         {
             LoadTextData();
             CheckVoiceStatusFile();
+            CheckFirstVoiceStatusFile();
             LoadVoiceStatus();
+            LoadFirstVoiceStatus();
         }
 
         private void LoadTextData()
@@ -45,6 +49,29 @@ namespace IGPS.Services
         {
             string filePath = Path.Combine(LocalDataPath, voiceStatusFile);
             string serverPath = Path.Combine(ServerUserDataDirPath, voiceStatusFile);
+
+            if (!Directory.Exists(LocalDataPath))
+            {
+                Directory.CreateDirectory(LocalDataPath);
+            }
+
+            if (!File.Exists(filePath))
+            {
+                if (FTPService.CheckFileExist(serverPath))
+                {
+                    FTPService.DownloadFile(filePath, serverPath);
+                }
+                else
+                {
+                    File.WriteAllText(filePath, "");
+                }
+            }
+        }
+
+        private void CheckFirstVoiceStatusFile()
+        {
+            string filePath = Path.Combine(LocalDataPath, firstVoiceSetStatusFile);
+            string serverPath = Path.Combine(ServerUserDataDirPath, firstVoiceSetStatusFile);
 
             if (!Directory.Exists(LocalDataPath))
             {
@@ -112,6 +139,34 @@ namespace IGPS.Services
             }
         }
 
+        private void LoadFirstVoiceStatus()
+        {
+            string filePath = Path.Combine(LocalDataPath, firstVoiceSetStatusFile);
+
+            firstVoiceSetStatusData = new List<int>();
+
+            if (File.Exists(filePath))
+            {
+                string valueString = File.ReadAllText(filePath);
+
+                if (string.IsNullOrWhiteSpace(valueString))
+                {
+                    firstVoiceSetStatusData.AddRange(new int[9]);
+                }
+                else
+                {
+                    foreach (var value in valueString)
+                    {
+                        firstVoiceSetStatusData.Add(int.Parse(value.ToString()));
+                    }
+                }
+            }
+            else
+            {
+                DependencyService.Get<IToast>().Show("Cannot load first voice status");
+            }
+        }
+
         public bool SaveVoiceStatus()
         {
             string filePath = Path.Combine(LocalDataPath, voiceStatusFile);
@@ -140,7 +195,30 @@ namespace IGPS.Services
             return true;
         }
 
-        public bool ListItem()
+        public bool SaveFirstVoiceStatus()
+        {
+            string filePath = Path.Combine(LocalDataPath, firstVoiceSetStatusFile);
+
+            try
+            {
+                var builder = new StringBuilder();
+
+                foreach (var value in firstVoiceSetStatusData)
+                {
+                    builder.Append(value);
+                }
+
+                File.WriteAllText(filePath, builder.ToString());
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        /*public bool ListItem()
         {
             try
             {
@@ -162,9 +240,9 @@ namespace IGPS.Services
             }
 
             return true;
-        }
+        }*/
 
-        public DataRow FindDataRow(int section, int number)
+        /*public DataRow FindDataRow(int section, int number)
         {
             const string SectionIndex = "Section";
             const string NumberIndex = "No.";
@@ -207,12 +285,25 @@ namespace IGPS.Services
             }
 
             return true;
-        }
+        }*/
 
         public bool UploadVoiceStatus()
         {
             string filePath = Path.Combine(LocalDataPath, voiceStatusFile);
             string serverPath = Path.Combine(ServerUserDataDirPath, voiceStatusFile);
+
+            if (!FTPService.CheckDirExist(ServerUserDataDirPath))
+            {
+                FTPService.CreateDir(ServerUserDataDirPath);
+            }
+
+            return FTPService.UploadFile(filePath, serverPath);
+        }
+
+        public bool UploadFirstVoiceStatus()
+        {
+            string filePath = Path.Combine(LocalDataPath, firstVoiceSetStatusFile);
+            string serverPath = Path.Combine(ServerUserDataDirPath, firstVoiceSetStatusFile);
 
             if (!FTPService.CheckDirExist(ServerUserDataDirPath))
             {

@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="IGPS.Views.FirstVoiceSet.FirstVoiceSetRecordPage"
              xmlns:local="clr-namespace:IGPS"
-             NavigationPage.HasNavigationBar="False">
+             Title="{Binding Title}">
 
     <ContentPage.Content>
         <AbsoluteLayout>
@@ -20,20 +20,9 @@
 
             </StackLayout>
 
-            <Label x:Name="RecordCountLabel" HorizontalOptions="Center" IsVisible="true"
-                   AbsoluteLayout.LayoutBounds="0, .5, 1, .1"
-                   AbsoluteLayout.LayoutFlags="All"
-                   Text="1 / 3" TextColor="Blue" HorizontalTextAlignment="Center"/>
-
-            <ProgressBar x:Name="RecordCountProgressBar" HorizontalOptions="Center" WidthRequest="200"
+            <ProgressBar x:Name="RecordCountProgressBar" HorizontalOptions="Center" WidthRequest="200" IsVisible="False"
                          AbsoluteLayout.LayoutBounds=".5, .6, .8 , .1"
                          AbsoluteLayout.LayoutFlags="All"/>
-
-            <Button x:Name="FirstVoiceSetRecordNextButton" IsEnabled="False"
-                    Text="{x:Static local:AppResources.VoiceFirstSet_NextButton_Next}" FontSize="Large" TextColor="White"
-                    AbsoluteLayout.LayoutBounds=".5, .75, .7, .08"
-                    AbsoluteLayout.LayoutFlags="All"
-                    Clicked="FirstVoiceSetRecordNextButton_Clicked"/>
 
             <Label x:Name="RecordStatusLabel" HorizontalOptions="Center" IsVisible="false"
                    AbsoluteLayout.LayoutBounds="0, .9, 1, .1"
@@ -46,6 +35,7 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition />
                     <ColumnDefinition />
+                    <ColumnDefinition />
                 </Grid.ColumnDefinitions>
                 <Frame Grid.Row="0" Grid.Column="0"
                        Padding="0">
@@ -54,7 +44,14 @@
                             Text="{x:Static local:AppResources.Record}"
                             Clicked="RecordButton_Clicked"/>
                 </Frame>
-                <Frame Grid.Row="0" Grid.Column="1" 
+                <Frame Grid.Row="0" Grid.Column="1"
+                       Padding="0">
+                    <Button x:Name="PlayButton" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
+                            BackgroundColor="AliceBlue" 
+                            Text="{x:Static local:AppResources.Play}"
+                            Clicked="PlayButton_Clicked"/>
+                </Frame>
+                <Frame Grid.Row="0" Grid.Column="2" 
                        Padding="0">
                     <Button x:Name="UploadButton" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsEnabled="False"
                             BackgroundColor="AliceBlue" 

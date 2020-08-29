@@ -1,5 +1,6 @@
 ﻿using IGPS.Models;
 using IGPS.ViewModels;
+using IGPS.Views.FirstVoiceSet;
 using IGPS.Views.VoiceListPages;
 
 using System.Linq;
@@ -30,7 +31,14 @@ namespace IGPS.Views
 
             (sender as CollectionView).SelectedItem = null;
 
-            await Navigation.PushAsync(new MainVoiceChapterPage(item.Section), true);
+            if (item.Section == 0)
+            {
+                await Navigation.PushAsync(new FirstVoiceSetListPage(new ChapterItem(item.Section, 0, 0, 8)), true);
+            }
+            else
+            {
+                await Navigation.PushAsync(new MainVoiceChapterPage(item.Section), true);
+            }
         }
 
         protected override void OnAppearing()
@@ -40,7 +48,7 @@ namespace IGPS.Views
             (BindingContext as MainVoiceSectionViewModel).CalcProgress();
 
             ListCollectionView.ItemsSource = null;
-            ListCollectionView.ItemsSource = (BindingContext as MainVoiceSectionViewModel).SetionItems;
+            ListCollectionView.ItemsSource = (BindingContext as MainVoiceSectionViewModel).SectionItems;
         }
     }
 }

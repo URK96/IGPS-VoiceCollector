@@ -7,7 +7,7 @@ namespace IGPS.ViewModels
 {
     class MainVoiceSectionViewModel : BaseViewModel
     {
-        public List<SectionItem> SetionItems { get; set; }
+        public List<SectionItem> SectionItems { get; set; }
 
         public MainVoiceSectionViewModel()
         {
@@ -18,19 +18,24 @@ namespace IGPS.ViewModels
 
         private void CreateItems()
         {
-            SetionItems = new List<SectionItem>();
+            SectionItems = new List<SectionItem>();
 
-            for (int i = 0; i < AppEnvironment.dataService.voiceTextData.Keys.Count; ++i)
+            SectionItems.Add(new SectionItem(0, 9)); // First Voice Set Section
+
+            for (int i = 1; i <= AppEnvironment.dataService.voiceTextData.Keys.Count; ++i)
             {
-                SetionItems.Add(new SectionItem(i + 1));
+                SectionItems.Add(new SectionItem(i));
             }
         }
 
         internal void CalcProgress()
         {
-            for (int i = 0; i < SetionItems.Count; ++i)
+            // First Voice Section Progress
+            SectionItems[0].Progress = AppEnvironment.dataService.firstVoiceSetStatusData.Count(n => (n == 3)) / (float)SectionItems[0].Count * 100;
+
+            for (int i = 1; i < SectionItems.Count; ++i)
             {
-                var section = SetionItems[i];
+                var section = SectionItems[i];
 
                 section.Progress = AppEnvironment.dataService.voiceStatusData[section.Section].Count(n => (n == 3)) / (float)section.Count * 100;
             }

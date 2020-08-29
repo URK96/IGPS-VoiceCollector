@@ -1,21 +1,44 @@
-﻿using IGPS.Services;
+﻿using IGPS.Models;
+
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace IGPS.ViewModels
 {
     class FirstVoiceSetRecordViewModel : BaseViewModel
     {
-        public int Stage { get; set; }
-        public int Count { get; set; }
+        public VoiceListItem Item { get; set; }
 
-        public FirstVoiceSetRecordViewModel()
+        public FirstVoiceSetRecordViewModel(VoiceListItem item)
         {
-            AppEnvironment.dataService = new DataService();
+            Item = item;
 
-            Stage = 1;
-            Count = 1;
+            Title = $"{Item.Section}-{item.Chapter} No. {Item.Number}";
         }
+
+        public void UpdateItemInfo(bool isRecorded, bool isUploaded)
+        {
+            int statusCode = 0;
+
+            statusCode += isRecorded ? 1 : 0;
+            statusCode += isUploaded ? 2 : 0;
+
+            AppEnvironment.dataService.firstVoiceSetStatusData[Item.Index] = statusCode;
+
+            AppEnvironment.dataService.SaveFirstVoiceStatus();
+            AppEnvironment.dataService.UploadFirstVoiceStatus();
+        }
+
+        public bool CheckRecordedFile()
+        {
+            try
+            {
+                return AppEnvironment.dataService.firstVoiceSetStatusData[Item.Index] != 0;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
     }
 }

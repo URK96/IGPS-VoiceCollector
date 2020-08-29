@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Login_ButtonText" xml:space="preserve">
+    <value>등록 과정 진행하기</value>
+  </data>
   <data name="Main_MenuPage_About" xml:space="preserve">
     <value>앱 정보</value>
   </data>
@@ -146,6 +149,9 @@
   </data>
   <data name="Recording" xml:space="preserve">
     <value>녹음 중...</value>
+  </data>
+  <data name="RecordSuccess" xml:space="preserve">
+    <value>녹음이 완료되었습니다 :)</value>
   </data>
   <data name="ReUpload" xml:space="preserve">
     <value>다시 업로드</value>
@@ -224,11 +230,11 @@
     <value>다음 단계로</value>
   </data>
   <data name="VoiceFirstSet_Info_Message" xml:space="preserve">
-    <value>개인별 초기 음성 보정 단계를 진행합니다. 
+    <value>개인별 음성 분석 녹음을 진행합니다.
 본 단계는 음성 분석을 위한 중요한 단계이니 신중하게 녹음해주시기 바랍니다.</value>
   </data>
   <data name="VoiceFirstSet_Info_Title" xml:space="preserve">
-    <value>초기 음성 보정</value>
+    <value>초기 음성 분석을 위한 녹음</value>
   </data>
   <data name="VoiceFirstSet_NextButton_Finish" xml:space="preserve">
     <value>완료</value>
@@ -237,8 +243,7 @@
     <value>다음 단계로</value>
   </data>
   <data name="VoiceFirstSet_Title" xml:space="preserve">
-    <value>녹음 버튼을 누르고 아래 단어를 10초간 발음하여
-3회 녹음하세요.</value>
+    <value>녹음 버튼을 누르고 아래 단어를 10초간 발음하여 녹음하세요.</value>
   </data>
   <data name="VoiceFirstSet_VoiceText_1" xml:space="preserve">
     <value>아</value>

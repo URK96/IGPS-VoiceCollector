@@ -20,14 +20,12 @@
                 <Label HorizontalOptions="FillAndExpand" 
                        Text="녹음할 내용" HorizontalTextAlignment="Center" FontSize="Title" FontAttributes="Bold" />
 
-                <ScrollView Margin="0, 30, 0, 0" HorizontalOptions="FillAndExpand">
-                    <Label Padding="30, 0, 30, 0" 
-                           Text="{Binding Item.VoiceText}" FontSize="Large" />
-                </ScrollView>
+                <Label Margin="0, 30, 0, 0" Padding="30, 0, 30, 0" 
+                       Text="{Binding Item.VoiceText}" FontSize="Large" />
 
             </StackLayout>
 
-            <Label x:Name="RecordStatusLabel" HorizontalOptions="FillAndExpand" IsVisible="false"
+            <Label x:Name="RecordStatusLabel" HorizontalOptions="FillAndExpand" IsVisible="False"
                    AbsoluteLayout.LayoutBounds="0, .9, 1, .1"
                    AbsoluteLayout.LayoutFlags="All"
                    Text="{x:Static local:AppResources.Recording}" TextColor="Red" HorizontalTextAlignment="Center"/>
@@ -58,7 +56,8 @@
                        Padding="0">
                     <Button x:Name="UploadButton" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" 
                             BackgroundColor="AliceBlue" 
-                            Text="{x:Static local:AppResources.Upload}" />
+                            Text="{x:Static local:AppResources.Upload}"
+                            Clicked="UploadButton_Clicked"/>
                 </Frame>
             </Grid>
         </AbsoluteLayout>

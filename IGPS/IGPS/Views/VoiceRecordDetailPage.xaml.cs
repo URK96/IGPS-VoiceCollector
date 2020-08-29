@@ -84,7 +84,7 @@ namespace IGPS.Views
 
         protected override void OnDisappearing()
         {
-            if (recorder?.IsRecording != null)
+            if ((recorder != null) && recorder.IsRecording)
             {
                 recorder.StopRecording();
 
@@ -112,10 +112,15 @@ namespace IGPS.Views
                 }
 
                 isRecorded = true;
+
+                DependencyService.Get<IToast>().Show(AppResources.RecordSuccess);
             }
             catch (Exception ex)
             {
+#if DEBUG
                 DependencyService.Get<IToast>().Show(ex.ToString());
+#endif
+                DependencyService.Get<IToast>().Show(AppResources.RecordFail_Rerecord);
 
                 isRecorded = false;
             }
@@ -148,10 +153,16 @@ namespace IGPS.Views
             }
             catch (Exception ex)
             {
+#if DEBUG
                 DependencyService.Get<IToast>().Show(ex.ToString());
+#endif
+                DependencyService.Get<IToast>().Show(AppResources.UploadFail_ReUpload);
+
+                UploadButton.IsEnabled = true;
             }
             finally
             {
+                UploadButton.Text = AppResources.Upload;
                 RecordButton.IsEnabled = true;
                 RecordButton.Text = File.Exists(recordFilePath) ? AppResources.Re_Record : AppResources.Record;
             }
@@ -170,7 +181,14 @@ namespace IGPS.Views
                 UploadButton.Text = isUploaded ? AppResources.ReUpload : AppResources.Upload;
 
                 UpdateButtonStatus();
+
+                recorder = null;
             }
+        }
+
+        private void UploadButton_Clicked(object sender, EventArgs e)
+        {
+            _ = UploadFile();
         }
 
         private void PlayButton_Clicked(object sender, EventArgs e)
@@ -190,6 +208,8 @@ namespace IGPS.Views
                     UploadButton.IsEnabled = true;
 
                     PlayButton.Text = AppResources.Play;
+
+                    voiceFileStream?.Close();
                 }
                 else
                 {
@@ -212,6 +232,8 @@ namespace IGPS.Views
                         UploadButton.IsEnabled = true;
 
                         PlayButton.Text = AppResources.Play;
+
+                        voiceFileStream?.Close();
                     };
 
                     RecordButton.IsEnabled = false;

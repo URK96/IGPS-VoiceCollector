@@ -52,6 +52,8 @@ namespace IGPS.Droid
 
         public override void OnBackPressed()
         {
+            base.OnBackPressed();
+
             /*if (exitTimer.Enabled)
             {
                 base.OnBackPressed();

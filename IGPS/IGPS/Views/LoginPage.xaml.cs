@@ -29,11 +29,6 @@ namespace IGPS.Views
                     Application.Current.MainPage = new NavigationPage();
                     Application.Current.MainPage.Navigation.PushAsync(new InitialPage(), true);
                 }
-                else if (!AppEnvironment.authService.AuthenticatedUser.FirstVoiceSetCompleted)
-                {
-                    Application.Current.MainPage = new NavigationPage();
-                    Application.Current.MainPage.Navigation.PushAsync(new FirstVoiceSetInfoPage(), true);
-                }
                 else
                 {
                     Application.Current.MainPage = new MainPage();
@@ -41,7 +36,7 @@ namespace IGPS.Views
             }
             else
             {
-                SNSLoginMethodLayout.IsVisible = true;
+                LoginNextButton.IsVisible = true;
             }
         }
 
@@ -51,11 +46,14 @@ namespace IGPS.Views
 
             AppEnvironment.ToggleLoadingIndicator(LoginIndicator, true);
 
-            //await Task.Delay(1000);
-
             CheckLogIn(null, false);
 
             AppEnvironment.ToggleLoadingIndicator(LoginIndicator, false);
+        }
+
+        private void LoginNextButton_Clicked(object sender, System.EventArgs e)
+        {
+
         }
     }
 }

@@ -12,6 +12,13 @@
             Count = AppEnvironment.dataService.voiceTextData[key].Length;
             Progress = 0;
         }
+
+        public SectionItem(int key, int count)
+        {
+            Section = key;
+            Count = count;
+            Progress = 0;
+        }
     }
 
     public class ChapterItem

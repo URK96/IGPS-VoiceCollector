@@ -61,6 +61,15 @@ namespace IGPS {
         }
         
         /// <summary>
+        ///   등록 과정 진행하기과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string Login_ButtonText {
+            get {
+                return ResourceManager.GetString("Login_ButtonText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   앱 정보과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string Main_MenuPage_About {
@@ -156,6 +165,15 @@ namespace IGPS {
         internal static string Recording {
             get {
                 return ResourceManager.GetString("Recording", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   녹음이 완료되었습니다 :)과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string RecordSuccess {
+            get {
+                return ResourceManager.GetString("RecordSuccess", resourceCulture);
             }
         }
         
@@ -597,7 +615,7 @@ namespace IGPS {
         }
         
         /// <summary>
-        ///   개인별 초기 음성 보정 단계를 진행합니다. 
+        ///   개인별 음성 분석 녹음을 진행합니다.
         ///본 단계는 음성 분석을 위한 중요한 단계이니 신중하게 녹음해주시기 바랍니다.과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string VoiceFirstSet_Info_Message {
@@ -607,7 +625,7 @@ namespace IGPS {
         }
         
         /// <summary>
-        ///   초기 음성 보정과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   초기 음성 분석을 위한 녹음과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string VoiceFirstSet_Info_Title {
             get {
@@ -634,8 +652,7 @@ namespace IGPS {
         }
         
         /// <summary>
-        ///   녹음 버튼을 누르고 아래 단어를 10초간 발음하여
-        ///3회 녹음하세요.과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   녹음 버튼을 누르고 아래 단어를 10초간 발음하여 녹음하세요.과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string VoiceFirstSet_Title {
             get {
