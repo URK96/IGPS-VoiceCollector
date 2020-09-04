@@ -6,8 +6,8 @@ namespace IGPS.Services.Server
 {
     public class FTPService
     {
-        const string id = "ftpUser";
-        const string pw = "1598462";
+        const string id = "igpsUser";
+        const string pw = "bise1549";
 
         public static FtpWebRequest CreateRequest(string path)
         {

@@ -12,7 +12,7 @@
         <ScrollView>
             <StackLayout>
                 <Label Margin="0, 20, 0, 0" 
-                       Text="{Binding User.Name, StringFormat='{0}님의 진행 정보'}" FontSize="Title" HorizontalTextAlignment="Center" />
+                       Text="{Binding User.Initial, StringFormat='{0}님의 진행 정보'}" FontSize="Title" HorizontalTextAlignment="Center" />
                 
                 <StackLayout Orientation="Vertical" Margin="0, 100, 0, 0">
                     <Label Text="{Binding ConvertProgress, StringFormat='{0:F2}% 완료'}" HorizontalTextAlignment="Center" FontSize="Large" />

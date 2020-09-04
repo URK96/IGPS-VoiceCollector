@@ -40,7 +40,7 @@
                                          HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                 <Label Text="{Binding Section, StringFormat='Section {0}'}" FontSize="Title" FontAttributes="Bold" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" />
                                 <Label Text="{Binding Count, StringFormat='{0} 개'}" FontSize="Subtitle" HorizontalTextAlignment="End" VerticalTextAlignment="Center" />
-                                <Label Text="{Binding Progress, StringFormat='{0}%'}" FontSize="Subtitle" FontAttributes="Bold" HorizontalTextAlignment="End" VerticalTextAlignment="Center" />
+                                <Label Text="{Binding Progress, StringFormat='{0:F2}%'}" FontSize="Subtitle" FontAttributes="Bold" HorizontalTextAlignment="End" VerticalTextAlignment="Center" />
                             </StackLayout>
                         </Frame>
                     </ContentView>
