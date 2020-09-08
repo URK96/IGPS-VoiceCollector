@@ -3,7 +3,6 @@ using IGPS.Services.Server;
 
 using System;
 using System.Collections.Generic;
-using System.Data;
 using System.IO;
 using System.Text;
 
@@ -39,10 +38,11 @@ namespace IGPS.Services
 
         private void LoadTextData()
         {
-            voiceTextData = new Dictionary<int, string[]>();
-
-            voiceTextData.Add(1, AppResources.Section1.Split('\n'));
-            voiceTextData.Add(2, AppResources.Section2.Split('\n'));
+            voiceTextData = new Dictionary<int, string[]>
+            {
+                { 1, AppResources.Section1.Split('\n') },
+                { 2, AppResources.Section2.Split('\n') }
+            };
         }
 
         private void CheckVoiceStatusFile()

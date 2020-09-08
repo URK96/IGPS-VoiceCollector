@@ -17,15 +17,11 @@ namespace IGPS.Services
         public bool IsAuthenticated => UserInfo.LoadUserInfo() != null;
         public UserInfo AuthenticatedUser => UserInfo.LoadUserInfo();
 
-        public Task<bool> LoginAsync(string email, string password)
+        public Task<bool> LoginAsync()
         {
             var user = new UserInfo
             {
-                Email = email,
-                Name = email,
-                LastName = string.Empty,
-                PictureUrl = "",
-                Token = email,
+                FirstVoiceSetCompleted = false,
                 LoggedInWithSNSAccount = false,
                 Provider = SNSProvider.None
             };
@@ -33,6 +29,29 @@ namespace IGPS.Services
             user.SaveUserInfo();
 
             return Task.FromResult(true);
+        }
+
+        public bool CreateUser()
+        {
+            try
+            {
+                var user = new UserInfo
+                {
+                    FirstVoiceSetCompleted = false,
+                    LoggedInWithSNSAccount = false,
+                    Provider = SNSProvider.None
+                };
+
+                user.SaveUserInfo();
+            }
+            catch (Exception ex)
+            {
+                AppEnvironment.ShowErrorMessage(ex.ToString());
+
+                return false;
+            }
+
+            return true;
         }
 
         public bool LoginWithSNS(SNSProvider provider)

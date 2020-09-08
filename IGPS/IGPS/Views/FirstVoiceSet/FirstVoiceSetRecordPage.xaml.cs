@@ -80,8 +80,9 @@ namespace IGPS.Views.FirstVoiceSet
         {
             bool hasRecordedFile = (BindingContext as FirstVoiceSetRecordViewModel).CheckRecordedFile();
 
-            PlayButton.IsEnabled = hasRecordedFile;
+            PlayButton.IsEnabled = true;
             RecordButton.Text = hasRecordedFile ? AppResources.Re_Record : AppResources.Record;
+            UploadButton.IsEnabled = File.Exists(recordFilePath);
         }
 
         private void RecordButton_Clicked(object sender, EventArgs e)
@@ -160,7 +161,7 @@ namespace IGPS.Views.FirstVoiceSet
         {
             try
             {
-                string serverDirPath = AppEnvironment.dataService.ServerUserDataDirPath;
+                string serverDirPath = AppEnvironment.dataService.ServerUserDataDirPath + "/";
 
                 UploadButton.IsEnabled = false;
                 UploadButton.Text = AppResources.Uploading;

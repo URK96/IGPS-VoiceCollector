@@ -2,6 +2,8 @@
 using System.IO;
 using System.Net;
 
+using Xamarin.Forms;
+
 namespace IGPS.Services.Server
 {
     public class FTPService
@@ -29,8 +31,10 @@ namespace IGPS.Services.Server
                     return true;
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                AppEnvironment.ShowErrorMessage(ex.ToString());
+
                 return false;
             }
         }
@@ -47,8 +51,10 @@ namespace IGPS.Services.Server
                     return true;
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                AppEnvironment.ShowErrorMessage(ex.ToString());
+
                 return false;
             }
         }
@@ -67,6 +73,8 @@ namespace IGPS.Services.Server
             }
             catch (Exception ex)
             {
+                AppEnvironment.ShowErrorMessage(ex.ToString());
+
                 return false;
             }
         }
@@ -79,11 +87,13 @@ namespace IGPS.Services.Server
                 {
                     wc.Credentials = new NetworkCredential(id, pw);
 
-                    wc.UploadFileTaskAsync(serverPath, filePath);
+                    wc.UploadFile(serverPath, filePath);
                 }
             }
             catch (Exception ex)
             {
+                AppEnvironment.ShowErrorMessage(ex.ToString());
+
                 return false;
             }
 
@@ -110,6 +120,8 @@ namespace IGPS.Services.Server
             }
             catch (Exception ex)
             {
+                AppEnvironment.ShowErrorMessage(ex.ToString());
+
                 return false;
             }
 

@@ -15,19 +15,18 @@ namespace IGPS.Views
         {
             InitializeComponent();
 
-            MessagingCenter.Subscribe<UserInfo, bool>(this, MessengerKeys.AuthenticationRequested, CheckLogIn);
+            //MessagingCenter.Subscribe<UserInfo, bool>(this, MessengerKeys.AuthenticationRequested, CheckLogIn);
         }
 
-        private void CheckLogIn(UserInfo user, bool isLogin)
+        private void CheckLogIn()
         {
-            if (isLogin || UserInfo.LoadUserInfo() != null)
+            if (UserInfo.LoadUserInfo() != null)
             {
                 DependencyService.Get<IToast>().Show(AppResources.SNSLogin_LoginSuccess);
 
                 if (!AppEnvironment.authService.AuthenticatedUser.FirstSetCompleted)
                 {
-                    Application.Current.MainPage = new NavigationPage();
-                    Application.Current.MainPage.Navigation.PushAsync(new InitialPage(), true);
+                    EnterFirstSetPage();
                 }
                 else
                 {
@@ -46,14 +45,22 @@ namespace IGPS.Views
 
             AppEnvironment.ToggleLoadingIndicator(LoginIndicator, true);
 
-            CheckLogIn(null, false);
+            CheckLogIn();
 
             AppEnvironment.ToggleLoadingIndicator(LoginIndicator, false);
         }
 
         private void LoginNextButton_Clicked(object sender, System.EventArgs e)
         {
+            AppEnvironment.authService.CreateUser();
 
+            EnterFirstSetPage();
+        }
+
+        private void EnterFirstSetPage()
+        {
+            Application.Current.MainPage = new NavigationPage();
+            Application.Current.MainPage.Navigation.PushAsync(new InitialPage(), true);
         }
     }
 }

@@ -39,6 +39,5 @@ namespace IGPS.ViewModels
                 return false;
             }
         }
-
     }
 }

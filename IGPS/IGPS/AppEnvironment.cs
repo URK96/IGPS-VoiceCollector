@@ -21,5 +21,12 @@ namespace IGPS
             indicator.IsRunning = isEnable;
             indicator.BackgroundColor = isEnable ? Color.Gray : Color.Default;
         }
+
+        public static void ShowErrorMessage(string message)
+        {
+#if DEBUG
+            DependencyService.Get<IToast>().Show(message);
+#endif
+        }
     }
 }

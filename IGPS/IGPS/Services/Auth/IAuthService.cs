@@ -9,7 +9,8 @@ namespace IGPS.Services.Auth
         bool IsAuthenticated { get; }
         UserInfo AuthenticatedUser { get; }
 
-        Task<bool> LoginAsync(string email, string password);
+        Task<bool> LoginAsync();
+        bool CreateUser();
         bool LoginWithSNS(SNSProvider provider);
         Task<bool> UserIsAuthenticatedAndValidAsync();
         Task LogoutAsync();
