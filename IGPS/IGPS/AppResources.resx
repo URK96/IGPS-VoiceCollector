@@ -223,6 +223,9 @@
   <data name="Uploading" xml:space="preserve">
     <value>업로드 중...</value>
   </data>
+  <data name="Upload_Success" xml:space="preserve">
+    <value>업로드를 완료했습니다 :)</value>
+  </data>
   <data name="UserFirstSet_AgePage_Title" xml:space="preserve">
     <value>나이를 입력하세요</value>
   </data>

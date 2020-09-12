@@ -570,6 +570,15 @@ namespace IGPS {
         }
         
         /// <summary>
+        ///   업로드를 완료했습니다 :)과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string Upload_Success {
+            get {
+                return ResourceManager.GetString("Upload_Success", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   업로드에 실패했습니다.과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string UploadFail {

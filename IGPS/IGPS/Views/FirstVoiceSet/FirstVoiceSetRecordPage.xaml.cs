@@ -196,6 +196,8 @@ namespace IGPS.Views.FirstVoiceSet
             try
             {
                 (BindingContext as FirstVoiceSetRecordViewModel).UpdateItemInfo(isRecorded, isUploaded);
+
+                DependencyService.Get<IToast>().Show(AppResources.Upload_Success);
             }
             catch (Exception)
             {

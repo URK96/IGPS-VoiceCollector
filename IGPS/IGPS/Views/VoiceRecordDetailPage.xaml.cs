@@ -169,6 +169,8 @@ namespace IGPS.Views
             try
             {
                 (BindingContext as VoiceRecordDetailViewModel).UpdateItemInfo(isRecorded, isUploaded);
+
+                DependencyService.Get<IToast>().Show(AppResources.Upload_Success);
             }
             catch (Exception)
             {
