@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<extra:DialogView  xmlns:extra="clr-namespace:AiForms.Dialogs.Abstractions;assembly=AiForms.Dialogs.Abstractions" 
+                   xmlns="http://xamarin.com/schemas/2014/forms" 
+                   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                   xmlns:local="clr-namespace:IGPS"
+                   x:Class="IGPS.Views.Dialogs.SimpleDialogView"
+                   CornerRadius="3" OffsetX="0" OffsetY="0" UseCurrentPageLocation="False"
+                   VerticalLayoutAlignment="Center" HorizontalLayoutAlignment="Center">
+
+    <ContentView BackgroundColor="LightGray" Padding="3">
+        <StackLayout WidthRequest="250" Orientation="Vertical" BackgroundColor="White">
+            <Label Text="{Binding Title}" HorizontalTextAlignment="Center" Margin="6" 
+                   FontSize="Title" />
+            <Label Text="{Binding Message}" Padding="5" 
+                   LineBreakMode="WordWrap" FontSize="Subtitle" />
+
+            <StackLayout Orientation="Horizontal">
+                <Button x:Name="NoButton" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand"
+                        Text="{x:Static local:AppResources.SimpleDialog_No}" 
+                        Clicked="NoButton_Clicked" />
+                <Button x:Name="YesButton" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand"
+                        Text="{x:Static local:AppResources.SimpleDialog_Yes}" 
+                        Clicked="YesButton_Clicked" />
+            </StackLayout>
+        
+        </StackLayout>
+    </ContentView>
+
+</extra:DialogView>

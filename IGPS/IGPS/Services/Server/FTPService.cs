@@ -1,8 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Net;
-
-using Xamarin.Forms;
+using System.Threading.Tasks;
 
 namespace IGPS.Services.Server
 {
@@ -88,6 +87,36 @@ namespace IGPS.Services.Server
                     wc.Credentials = new NetworkCredential(id, pw);
 
                     wc.UploadFile(serverPath, filePath);
+                }
+            }
+            catch (Exception ex)
+            {
+                AppEnvironment.ShowErrorMessage(ex.ToString());
+
+                return false;
+            }
+
+            return true;
+        }
+
+        public static async Task<bool> UploadFileAsync(string filePath, string serverPath, WebClient wc = null)
+        {
+            try
+            {
+                if (wc == null)
+                {
+                    using (wc = new WebClient())
+                    {
+                        wc.Credentials = new NetworkCredential(id, pw);
+
+                        await wc.UploadFileTaskAsync(serverPath, filePath);
+                    }
+                }
+                else
+                {
+                    wc.Credentials = new NetworkCredential(id, pw);
+
+                    await wc.UploadFileTaskAsync(serverPath, filePath);
                 }
             }
             catch (Exception ex)

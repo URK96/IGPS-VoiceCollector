@@ -42,6 +42,8 @@ namespace IGPS.Views.FirstSet
                 FirstSetInitialNextButton.IsEnabled = true;
                 FirstSetInitialNextButton.BackgroundColor = Color.OrangeRed;
             }
+
+            (sender as Entry).Text = inputText.ToUpper();
         }
 
         private void FirstSetInitialNextButton_Clicked(object sender, EventArgs e)

@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:IGPS"
+             xmlns:sv="clr-namespace:AiForms.Renderers;assembly=SettingsView"
+             x:Class="IGPS.Views.SettingPage">
+
+    <sv:SettingsView HasUnevenRows="true">
+
+        <sv:Section Title="General">
+            <sv:CommandCell Title="{x:Static local:AppResources.SettingPage_UploadAllVoice_Title}" Description="{x:Static local:AppResources.SettingPage_UploadAllVoice_Description}"
+                            Command="{Binding UploadCommand}"/>
+        </sv:Section>
+        
+    </sv:SettingsView>
+    
+</ContentPage>

@@ -435,6 +435,87 @@ namespace IGPS {
         }
         
         /// <summary>
+        ///   설정과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string SettingPage_Title {
+            get {
+                return ResourceManager.GetString("SettingPage_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   녹음된 모든 파일을 서버에 업로드 합니다. 정상적으로 업로드 되지 않은 경우에 사용하세요.과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string SettingPage_UploadAllVoice_Description {
+            get {
+                return ResourceManager.GetString("SettingPage_UploadAllVoice_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   녹음된 모든 파일들을 서버에 업로드 하시겠습니까?과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string SettingPage_UploadAllVoice_Dialog_Message {
+            get {
+                return ResourceManager.GetString("SettingPage_UploadAllVoice_Dialog_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   업로드 확인과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string SettingPage_UploadAllVoice_Dialog_Title {
+            get {
+                return ResourceManager.GetString("SettingPage_UploadAllVoice_Dialog_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   녹음된 파일이 없습니다. 녹음 후 업로드를 진행 해주세요.과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string SettingPage_UploadAllVoice_NoRecordedFiles {
+            get {
+                return ResourceManager.GetString("SettingPage_UploadAllVoice_NoRecordedFiles", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   녹음된 모든 파일 업로드과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string SettingPage_UploadAllVoice_Title {
+            get {
+                return ResourceManager.GetString("SettingPage_UploadAllVoice_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   모든 녹음 파일 업로드 중...과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string SettingPage_UploadAllVoiceProcess_Message {
+            get {
+                return ResourceManager.GetString("SettingPage_UploadAllVoiceProcess_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   아니오과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string SimpleDialog_No {
+            get {
+                return ResourceManager.GetString("SimpleDialog_No", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   예과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string SimpleDialog_Yes {
+            get {
+                return ResourceManager.GetString("SimpleDialog_Yes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   로그인에 성공했습니다.과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string SNSLogin_LoginSuccess {
@@ -485,6 +566,15 @@ namespace IGPS {
         internal static string Upload {
             get {
                 return ResourceManager.GetString("Upload", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   업로드에 실패했습니다.과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string UploadFail {
+            get {
+                return ResourceManager.GetString("UploadFail", resourceCulture);
             }
         }
         
@@ -575,6 +665,15 @@ namespace IGPS {
         internal static string UserFirstSet_InputError_Count8 {
             get {
                 return ResourceManager.GetString("UserFirstSet_InputError_Count8", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   5자리 이내의 대문자 이니셜을 입력해 주세요과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string UserFirstSet_InputError_Initial5 {
+            get {
+                return ResourceManager.GetString("UserFirstSet_InputError_Initial5", resourceCulture);
             }
         }
         

@@ -22,7 +22,11 @@ namespace IGPS.iOS
         //
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
-            global::Xamarin.Forms.Forms.Init();
+            Xamarin.Forms.Forms.Init();
+
+            AiForms.Renderers.iOS.SettingsViewInit.Init();
+            AiForms.Dialogs.Dialogs.Init();
+
             LoadApplication(new App());
 
             return base.FinishedLaunching(app, options);

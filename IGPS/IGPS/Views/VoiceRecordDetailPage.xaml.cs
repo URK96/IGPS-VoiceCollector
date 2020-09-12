@@ -8,7 +8,6 @@ using Plugin.SimpleAudioPlayer;
 using System;
 using System.IO;
 using System.Threading.Tasks;
-using System.Timers;
 
 using Xamarin.Essentials;
 using Xamarin.Forms;

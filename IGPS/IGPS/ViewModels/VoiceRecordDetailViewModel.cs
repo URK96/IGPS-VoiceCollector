@@ -2,8 +2,6 @@
 
 using System;
 
-using Xamarin.Forms;
-
 namespace IGPS.ViewModels
 {
     class VoiceRecordDetailViewModel : BaseViewModel

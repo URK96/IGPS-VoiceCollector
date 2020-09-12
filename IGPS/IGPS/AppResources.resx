@@ -169,6 +169,33 @@
   <data name="Section2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Section2.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
+  <data name="SettingPage_Title" xml:space="preserve">
+    <value>설정</value>
+  </data>
+  <data name="SettingPage_UploadAllVoiceProcess_Message" xml:space="preserve">
+    <value>모든 녹음 파일 업로드 중...</value>
+  </data>
+  <data name="SettingPage_UploadAllVoice_Description" xml:space="preserve">
+    <value>녹음된 모든 파일을 서버에 업로드 합니다. 정상적으로 업로드 되지 않은 경우에 사용하세요.</value>
+  </data>
+  <data name="SettingPage_UploadAllVoice_Dialog_Message" xml:space="preserve">
+    <value>녹음된 모든 파일들을 서버에 업로드 하시겠습니까?</value>
+  </data>
+  <data name="SettingPage_UploadAllVoice_Dialog_Title" xml:space="preserve">
+    <value>업로드 확인</value>
+  </data>
+  <data name="SettingPage_UploadAllVoice_NoRecordedFiles" xml:space="preserve">
+    <value>녹음된 파일이 없습니다. 녹음 후 업로드를 진행 해주세요.</value>
+  </data>
+  <data name="SettingPage_UploadAllVoice_Title" xml:space="preserve">
+    <value>녹음된 모든 파일 업로드</value>
+  </data>
+  <data name="SimpleDialog_No" xml:space="preserve">
+    <value>아니오</value>
+  </data>
+  <data name="SimpleDialog_Yes" xml:space="preserve">
+    <value>예</value>
+  </data>
   <data name="SNSLogin_LoginSuccess" xml:space="preserve">
     <value>로그인에 성공했습니다.</value>
   </data>
@@ -186,6 +213,9 @@
   </data>
   <data name="Upload" xml:space="preserve">
     <value>업로드</value>
+  </data>
+  <data name="UploadFail" xml:space="preserve">
+    <value>업로드에 실패했습니다.</value>
   </data>
   <data name="UploadFail_ReUpload" xml:space="preserve">
     <value>업로드에 실패했습니다. 버튼을 눌러 다시 업로드를 시도 해 주세요.</value>
@@ -216,6 +246,9 @@
   </data>
   <data name="UserFirstSet_InputError_Count8" xml:space="preserve">
     <value>숫자 8자리를 입력하세요</value>
+  </data>
+  <data name="UserFirstSet_InputError_Initial5" xml:space="preserve">
+    <value>5자리 이내의 대문자 이니셜을 입력해 주세요</value>
   </data>
   <data name="UserFirstSet_InputError_OnlyKorean" xml:space="preserve">
     <value>10자 이하의 한글로 입력해 주세요</value>

@@ -35,8 +35,7 @@ namespace IGPS.Views
                         menuPages.Add(id, new NavigationPage(new MainVoiceSectionPage()));
                         break;
                     case (int)MenuItemType.Setting:
-                        // Add page code
-                        return;
+                        menuPages.Add(id, new NavigationPage(new SettingPage()));
                         break;
                     case (int)MenuItemType.About:
                         menuPages.Add(id, new NavigationPage(new AboutPage()));

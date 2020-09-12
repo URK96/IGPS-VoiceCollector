@@ -27,6 +27,10 @@ namespace IGPS.Droid
             Xamarin.Forms.Forms.SetFlags(new string[] { "RadioButton_Experimental", "Shapes_Experimental" });
             Xamarin.Forms.Forms.Init(this, savedInstanceState);  
             Xamarin.Auth.Presenters.XamarinAndroid.AuthenticationConfiguration.Init(this, savedInstanceState);
+
+            AiForms.Renderers.Droid.SettingsViewInit.Init();
+            AiForms.Dialogs.Dialogs.Init(this);
+
             LoadApplication(new App());
 
             _ = RequestPermissions();

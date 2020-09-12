@@ -1,7 +1,6 @@
 ﻿
 using IGPS.Models;
 using IGPS.Views.FirstSet;
-using IGPS.Views.FirstVoiceSet;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;

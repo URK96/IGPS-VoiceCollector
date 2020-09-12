@@ -1,7 +1,6 @@
 ﻿using IGPS.Models;
 using IGPS.ViewModels;
 
-using System.Collections.Generic;
 using System.Linq;
 
 using Xamarin.Forms;

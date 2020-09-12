@@ -12,7 +12,6 @@ using System.Timers;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using Plugin.SimpleAudioRecorder;
 
 namespace IGPS.Views.FirstVoiceSet
 {
@@ -26,7 +25,7 @@ namespace IGPS.Views.FirstVoiceSet
         private bool isRecorded = false;
         private bool isUploaded = true;
         private bool isSuddenStop = false;
-        
+
         private int secCount = 0;
 
         private AudioRecorderService recorder;
@@ -73,7 +72,7 @@ namespace IGPS.Views.FirstVoiceSet
                 isSuddenStop = true;
             }
 
-            base.OnDisappearing();            
+            base.OnDisappearing();
         }
 
         private void UpdateButtonStatus()

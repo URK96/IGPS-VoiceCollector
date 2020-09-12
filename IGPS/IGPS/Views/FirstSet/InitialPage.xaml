@@ -25,7 +25,7 @@
                        Margin="0, 20, 0, 0"
                        TextChanged="FirstSetInitialInput_TextChanged" />
                 <Label x:Name="FirstSetInitialInputStatus" IsVisible="false"
-                       Text="{x:Static local:AppResources.UserFirstSet_InputError_OnlyKorean}" TextColor="Red" FontSize="Caption" HorizontalTextAlignment="Center"/>
+                       Text="{x:Static local:AppResources.UserFirstSet_InputError_Initial5}" TextColor="Red" FontSize="Caption" HorizontalTextAlignment="Center"/>
             </StackLayout>
 
             <Button x:Name="FirstSetInitialNextButton" IsEnabled="false"
