@@ -124,6 +124,15 @@ namespace IGPS {
         }
         
         /// <summary>
+        ///   완료 안됨과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string NonSuccessed {
+            get {
+                return ResourceManager.GetString("NonSuccessed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   재생과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string Play {
@@ -138,6 +147,15 @@ namespace IGPS {
         internal static string Re_Record {
             get {
                 return ResourceManager.GetString("Re_Record", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   재구축 중...과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string Rebuilding {
+            get {
+                return ResourceManager.GetString("Rebuilding", resourceCulture);
             }
         }
         
@@ -174,6 +192,15 @@ namespace IGPS {
         internal static string RecordSuccess {
             get {
                 return ResourceManager.GetString("RecordSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   삭제 중...과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string Removing {
+            get {
+                return ResourceManager.GetString("Removing", resourceCulture);
             }
         }
         
@@ -435,6 +462,114 @@ namespace IGPS {
         }
         
         /// <summary>
+        ///   서버 파일 확인 중...과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string ServerChecking {
+            get {
+                return ResourceManager.GetString("ServerChecking", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   앱에 로그인 된 정보에서 로그아웃 합니다.과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string SettingPage_Logout_Description {
+            get {
+                return ResourceManager.GetString("SettingPage_Logout_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   로그아웃 확인과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string SettingPage_Logout_Dialog_Message {
+            get {
+                return ResourceManager.GetString("SettingPage_Logout_Dialog_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   로그아웃 하시겠습니까?과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string SettingPage_Logout_Dialog_Title {
+            get {
+                return ResourceManager.GetString("SettingPage_Logout_Dialog_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   로그아웃이 정상적으로 완료되었습니다. 앱을 재시작 해주세요.과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string SettingPage_Logout_SuccessMessage {
+            get {
+                return ResourceManager.GetString("SettingPage_Logout_SuccessMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   앱 로그아웃과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string SettingPage_Logout_Title {
+            get {
+                return ResourceManager.GetString("SettingPage_Logout_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   녹음할 문장 글자가 표시되는 크기를 조정합니다.과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string SettingPage_RecordTextSize_Description {
+            get {
+                return ResourceManager.GetString("SettingPage_RecordTextSize_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   녹음 문장 크기 조절과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string SettingPage_RecordTextSize_Title {
+            get {
+                return ResourceManager.GetString("SettingPage_RecordTextSize_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   저장된 데이터를 전부 삭제하고 현재 로그인 되어있는 정보로 새로 데이터를 작성합니다.과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string SettingPage_RemoveAllData_Description {
+            get {
+                return ResourceManager.GetString("SettingPage_RemoveAllData_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   저장된 데이터를 전부 삭제하시겠습니까?과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string SettingPage_RemoveAllData_Dialog_Message {
+            get {
+                return ResourceManager.GetString("SettingPage_RemoveAllData_Dialog_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   삭제 확인과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string SettingPage_RemoveAllData_Dialog_Title {
+            get {
+                return ResourceManager.GetString("SettingPage_RemoveAllData_Dialog_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   저장된 데이터 삭제과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string SettingPage_RemoveAllData_Title {
+            get {
+                return ResourceManager.GetString("SettingPage_RemoveAllData_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   설정과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string SettingPage_Title {
@@ -557,6 +692,33 @@ namespace IGPS {
         internal static string StopRecord {
             get {
                 return ResourceManager.GetString("StopRecord", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   완료됨과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string Successed {
+            get {
+                return ResourceManager.GetString("Successed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   테스트과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string TextSizeDialog_PreviewText {
+            get {
+                return ResourceManager.GetString("TextSizeDialog_PreviewText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   글자 크기 조절과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string TextSizeDialog_Title {
+            get {
+                return ResourceManager.GetString("TextSizeDialog_Title", resourceCulture);
             }
         }
         
@@ -792,6 +954,15 @@ namespace IGPS {
         internal static string VoiceFirstSet_VoiceText_3 {
             get {
                 return ResourceManager.GetString("VoiceFirstSet_VoiceText_3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   작업 실패 :(과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string WorkFail {
+            get {
+                return ResourceManager.GetString("WorkFail", resourceCulture);
             }
         }
     }

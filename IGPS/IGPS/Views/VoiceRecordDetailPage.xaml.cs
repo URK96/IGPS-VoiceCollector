@@ -34,8 +34,10 @@ namespace IGPS.Views
         {
             InitializeComponent();
 
-            recordFileName = $"{item.Section}_{item.Number}.mp3";
+            recordFileName = $"{item.Section}_{item.Chapter}_{item.Number}.mp3";
             recordFilePath = Path.Combine(AppEnvironment.appDataPath, AppEnvironment.authService.AuthenticatedUser.GetUserString(), recordFileName);
+
+            RecordTextLabel.FontSize = Preferences.Get(AppSettingKeys.TextSizeSetting, 15);
 
             BindingContext = new VoiceRecordDetailViewModel(item);
 
@@ -113,6 +115,8 @@ namespace IGPS.Views
                 isRecorded = true;
 
                 DependencyService.Get<IToast>().Show(AppResources.RecordSuccess);
+
+                _ = UploadFile();
             }
             catch (Exception ex)
             {
@@ -122,14 +126,14 @@ namespace IGPS.Views
                 DependencyService.Get<IToast>().Show(AppResources.RecordFail_Rerecord);
 
                 isRecorded = false;
+                RecordButton.IsEnabled = true;
+                RecordButton.Text = AppResources.Record;
             }
-
-            _ = UploadFile();
         }
 
         private async Task UploadFile()
         {
-            string serverDirPath = AppEnvironment.dataService.ServerUserDataDirPath;
+            string serverDirPath = AppEnvironment.dataService.ServerUserDataDirPath + "/";
 
             await Task.Delay(10);
 

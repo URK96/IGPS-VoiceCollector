@@ -30,15 +30,11 @@ namespace IGPS.Views.FirstSet
 
             if ((inputText != checkText) || string.IsNullOrEmpty(inputText))
             {
-                FirstSetInitialInputStatus.IsVisible = true;
-
                 FirstSetInitialNextButton.IsEnabled = false;
                 FirstSetInitialNextButton.BackgroundColor = Color.Default;
             }
             else
             {
-                FirstSetInitialInputStatus.IsVisible = false;
-
                 FirstSetInitialNextButton.IsEnabled = true;
                 FirstSetInitialNextButton.BackgroundColor = Color.OrangeRed;
             }

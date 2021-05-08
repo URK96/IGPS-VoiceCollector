@@ -43,6 +43,8 @@ namespace IGPS.Views.FirstVoiceSet
             recordPath = Path.Combine(AppEnvironment.appDataPath, AppEnvironment.authService.AuthenticatedUser.GetUserString());
             recordFilePath = Path.Combine(recordPath, recordFileName);
 
+            FirstVoiceSetRecordText.FontSize = Preferences.Get(AppSettingKeys.TextSizeSetting, 15);
+
             BindingContext = new FirstVoiceSetRecordViewModel(item);
 
             timeTimer = new Timer(1000)

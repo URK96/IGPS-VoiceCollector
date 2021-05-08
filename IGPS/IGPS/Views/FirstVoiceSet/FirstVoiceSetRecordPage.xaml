@@ -16,7 +16,7 @@
                        Text="{x:Static local:AppResources.VoiceFirstSet_Title}" HorizontalTextAlignment="Center" FontSize="Title" FontAttributes="Bold" />
 
                 <Label x:Name="FirstVoiceSetRecordText" Margin="0, 20, 0, 0" HorizontalOptions="Center"
-                       Text="{x:Static local:AppResources.VoiceFirstSet_VoiceText_1}" FontSize="Header" />
+                       Text="{Binding Item.VoiceText}" FontSize="Header" />
 
             </StackLayout>
 

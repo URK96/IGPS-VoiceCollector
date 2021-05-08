@@ -138,8 +138,14 @@
   <data name="Main_MenuPage_Setting" xml:space="preserve">
     <value>설정</value>
   </data>
+  <data name="NonSuccessed" xml:space="preserve">
+    <value>완료 안됨</value>
+  </data>
   <data name="Play" xml:space="preserve">
     <value>재생</value>
+  </data>
+  <data name="Rebuilding" xml:space="preserve">
+    <value>재구축 중...</value>
   </data>
   <data name="Record" xml:space="preserve">
     <value>녹음</value>
@@ -152,6 +158,9 @@
   </data>
   <data name="RecordSuccess" xml:space="preserve">
     <value>녹음이 완료되었습니다 :)</value>
+  </data>
+  <data name="Removing" xml:space="preserve">
+    <value>삭제 중...</value>
   </data>
   <data name="ReUpload" xml:space="preserve">
     <value>다시 업로드</value>
@@ -168,6 +177,42 @@
   </data>
   <data name="Section2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Section2.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="ServerChecking" xml:space="preserve">
+    <value>서버 파일 확인 중...</value>
+  </data>
+  <data name="SettingPage_Logout_Description" xml:space="preserve">
+    <value>앱에 로그인 된 정보에서 로그아웃 합니다.</value>
+  </data>
+  <data name="SettingPage_Logout_Dialog_Message" xml:space="preserve">
+    <value>로그아웃 확인</value>
+  </data>
+  <data name="SettingPage_Logout_Dialog_Title" xml:space="preserve">
+    <value>로그아웃 하시겠습니까?</value>
+  </data>
+  <data name="SettingPage_Logout_SuccessMessage" xml:space="preserve">
+    <value>로그아웃이 정상적으로 완료되었습니다. 앱을 재시작 해주세요.</value>
+  </data>
+  <data name="SettingPage_Logout_Title" xml:space="preserve">
+    <value>앱 로그아웃</value>
+  </data>
+  <data name="SettingPage_RecordTextSize_Description" xml:space="preserve">
+    <value>녹음할 문장 글자가 표시되는 크기를 조정합니다.</value>
+  </data>
+  <data name="SettingPage_RecordTextSize_Title" xml:space="preserve">
+    <value>녹음 문장 크기 조절</value>
+  </data>
+  <data name="SettingPage_RemoveAllData_Description" xml:space="preserve">
+    <value>저장된 데이터를 전부 삭제하고 현재 로그인 되어있는 정보로 새로 데이터를 작성합니다.</value>
+  </data>
+  <data name="SettingPage_RemoveAllData_Dialog_Message" xml:space="preserve">
+    <value>저장된 데이터를 전부 삭제하시겠습니까?</value>
+  </data>
+  <data name="SettingPage_RemoveAllData_Dialog_Title" xml:space="preserve">
+    <value>삭제 확인</value>
+  </data>
+  <data name="SettingPage_RemoveAllData_Title" xml:space="preserve">
+    <value>저장된 데이터 삭제</value>
   </data>
   <data name="SettingPage_Title" xml:space="preserve">
     <value>설정</value>
@@ -210,6 +255,15 @@
   </data>
   <data name="StopRecord" xml:space="preserve">
     <value>녹음 중지</value>
+  </data>
+  <data name="Successed" xml:space="preserve">
+    <value>완료됨</value>
+  </data>
+  <data name="TextSizeDialog_PreviewText" xml:space="preserve">
+    <value>테스트</value>
+  </data>
+  <data name="TextSizeDialog_Title" xml:space="preserve">
+    <value>글자 크기 조절</value>
   </data>
   <data name="Upload" xml:space="preserve">
     <value>업로드</value>
@@ -289,5 +343,8 @@
   </data>
   <data name="VoiceFirstSet_VoiceText_3" xml:space="preserve">
     <value>우</value>
+  </data>
+  <data name="WorkFail" xml:space="preserve">
+    <value>작업 실패 :(</value>
   </data>
 </root>

@@ -1,4 +1,6 @@
-﻿namespace IGPS.Models
+﻿using System.Drawing;
+
+namespace IGPS.Models
 {
     public class SectionItem
     {
@@ -48,5 +50,7 @@
         public string VoiceText { get; set; }
         public bool IsRecorded { get; set; }
         public bool IsUploaded { get; set; }
+        public Color UploadTextColor { get; set; }
+        public string CompletedText { get; set; }
     }
 }

@@ -1,6 +1,11 @@
 ﻿using IGPS.Models;
+using IGPS.Services.Server;
 
 using System.Collections.Generic;
+using System.Drawing;
+using System.IO;
+using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
 
 namespace IGPS.ViewModels
 {
@@ -57,6 +62,31 @@ namespace IGPS.ViewModels
             }
         }
 
+        internal async Task UpdateStatus()
+        {
+            await Task.Delay(100);
+
+            string serverDirPath = AppEnvironment.dataService.ServerUserDataDirPath + "/";
+
+            foreach (var item in ListItems)
+            {
+                string serverFilePath = Path.Combine(serverDirPath, $"{item.Chapter}_{item.Number}.mp3");
+
+                if (FTPService.CheckFileExist(serverFilePath))
+                {
+                    item.IsUploaded = true;
+                    item.CompletedText = AppResources.Successed;
+                    item.UploadTextColor = Color.Green;
+                }
+                else
+                {
+                    item.IsUploaded = false;
+                    item.CompletedText = AppResources.NonSuccessed;
+                    item.UploadTextColor = Color.Red;
+                }
+            } 
+        }
+
         internal void SetStatus()
         {
             for (int i = 0; i < ListItems.Count; ++i)
@@ -70,18 +100,26 @@ namespace IGPS.ViewModels
                     case 0:
                         item.IsRecorded = false;
                         item.IsUploaded = false;
+                        item.CompletedText = AppResources.NonSuccessed;
+                        item.UploadTextColor = Color.Red;
                         break;
                     case 1:
                         item.IsRecorded = true;
                         item.IsUploaded = false;
+                        item.CompletedText = AppResources.NonSuccessed;
+                        item.UploadTextColor = Color.Red;
                         break;
                     case 2:
                         item.IsRecorded = false;
                         item.IsUploaded = true;
+                        item.CompletedText = AppResources.Successed;
+                        item.UploadTextColor = Color.Green;
                         break;
                     case 3:
                         item.IsRecorded = true;
                         item.IsUploaded = true;
+                        item.CompletedText = AppResources.Successed;
+                        item.UploadTextColor = Color.Green;
                         break;
                 }
             }

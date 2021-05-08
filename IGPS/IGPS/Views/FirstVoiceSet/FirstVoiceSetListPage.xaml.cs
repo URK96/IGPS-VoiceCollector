@@ -1,8 +1,12 @@
-﻿using IGPS.Models;
+﻿using AiForms.Dialogs;
+using AiForms.Dialogs.Abstractions;
+using IGPS.Models;
 using IGPS.ViewModels;
-
+using System;
 using System.Linq;
+using System.Threading.Tasks;
 
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -40,6 +44,42 @@ namespace IGPS.Views.FirstVoiceSet
 
             ListCollectionView.ItemsSource = null;
             ListCollectionView.ItemsSource = (BindingContext as FirstVoiceSetListViewModel).ListItems;
+
+            //            try
+            //            {
+            //                await Task.Delay(100);
+
+            //                Configurations.LoadingConfig = new LoadingConfig
+            //                {
+            //                    IndicatorColor = Color.AliceBlue,
+            //                    OverlayColor = Color.Gray,
+            //                    Opacity = 0.6,
+            //                    DefaultMessage = AppResources.ServerChecking
+            //                };
+
+            //                await Loading.Instance.StartAsync(async (progress) =>
+            //                {
+            //                    await (BindingContext as FirstVoiceSetListViewModel).UpdateStatus();
+
+            //                    await Task.Delay(100);
+            //                });
+            //                MainThread.BeginInvokeOnMainThread(() =>
+            //                {
+            //                    ListCollectionView.ItemsSource = null;
+            //                    ListCollectionView.ItemsSource = (BindingContext as FirstVoiceSetListViewModel).ListItems;
+            //                });
+            //            }
+            //            catch (Exception ex)
+            //            {
+            //#if DEBUG
+            //                DependencyService.Get<IToast>().Show(ex.ToString());
+            //#endif
+            //                DependencyService.Get<IToast>().Show(AppResources.WorkFail);
+            //            }
+            //            finally
+            //            {
+            //                Loading.Instance.Hide();
+            //            }
         }
     }
 }

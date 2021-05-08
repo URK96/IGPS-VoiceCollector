@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using System.Threading.Tasks;
 
 using Xamarin.Forms;
 
@@ -28,6 +29,11 @@ namespace IGPS.Services
         public List<int> firstVoiceSetStatusData;
 
         public DataService()
+        {
+            RefreshData();
+        }
+
+        public void RefreshData()
         {
             LoadTextData();
             CheckVoiceStatusFile();

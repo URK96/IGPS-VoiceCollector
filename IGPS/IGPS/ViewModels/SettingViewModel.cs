@@ -1,6 +1,7 @@
 ﻿using AiForms.Dialogs;
 using AiForms.Dialogs.Abstractions;
 
+using IGPS.Models;
 using IGPS.Services.Server;
 using IGPS.Views.Dialogs;
 
@@ -17,6 +18,9 @@ namespace IGPS.ViewModels
     public class SettingViewModel : BaseViewModel
     {
         public ICommand UploadCommand { get; }
+        public ICommand RemoveAllDataCommand { get; }
+        public ICommand LogoutCommand { get; }
+        public ICommand RecordTextSizeCommand { get; }
 
         public SettingViewModel()
         {
@@ -33,6 +37,39 @@ namespace IGPS.ViewModels
                 {
                     await UploadAllVoices();
                 }
+            });
+            RemoveAllDataCommand = new Command(async () =>
+            {
+                bool result = await Dialog.Instance.ShowAsync<SimpleDialogView>(new SimpleDialogViewModel()
+                {
+                    Title = AppResources.SettingPage_RemoveAllData_Dialog_Title,
+                    Message = AppResources.SettingPage_RemoveAllData_Dialog_Message
+                });
+
+                if (result)
+                {
+                    await RemoveAllData();
+                }
+            });
+            LogoutCommand = new Command(async () =>
+            {
+                bool result = await Dialog.Instance.ShowAsync<SimpleDialogView>(new SimpleDialogViewModel()
+                {
+                    Title = AppResources.SettingPage_Logout_Dialog_Title,
+                    Message = AppResources.SettingPage_Logout_Dialog_Message
+                });
+
+                if (result)
+                {
+                    await LogoutProcess();
+                }
+            });
+            RecordTextSizeCommand = new Command(async () =>
+            {
+                bool result = await Dialog.Instance.ShowAsync<TextSizeDialogView>(new TextSizeDialogViewModel()
+                {
+                    Title = AppResources.TextSizeDialog_Title,
+                });
             });
         }
 
@@ -89,6 +126,87 @@ namespace IGPS.ViewModels
                 DependencyService.Get<IToast>().Show(ex.ToString());
 #endif
                 DependencyService.Get<IToast>().Show(AppResources.UploadFail);
+            }
+            finally
+            {
+                Loading.Instance.Hide();
+            }
+        }
+
+        private async Task RemoveAllData()
+        {
+            try
+            {
+                Configurations.LoadingConfig = new LoadingConfig
+                {
+                    IndicatorColor = Color.AliceBlue,
+                    OverlayColor = Color.Gray,
+                    Opacity = 0.6,
+                    DefaultMessage = AppResources.Removing
+                };
+
+                await Loading.Instance.StartAsync(async (progress) =>
+                {
+                    string[] dirList = Directory.GetDirectories(AppEnvironment.appDataPath);
+
+                    foreach (string path in dirList)
+                    {
+                        Directory.Delete(path, true);
+                    }
+
+                    await Task.Delay(1000);
+
+                    Loading.Instance.SetMessage(AppResources.Rebuilding);
+
+                    AppEnvironment.dataService.RefreshData();
+
+                    await Task.Delay(1000);
+                });
+            }
+            catch (Exception ex)
+            {
+#if DEBUG
+                DependencyService.Get<IToast>().Show(ex.ToString());
+#endif
+                DependencyService.Get<IToast>().Show(AppResources.WorkFail);
+            }
+            finally
+            {
+                Loading.Instance.Hide();
+            }
+        }
+
+        private async Task LogoutProcess()
+        {
+            try
+            {
+                Configurations.LoadingConfig = new LoadingConfig
+                {
+                    IndicatorColor = Color.AliceBlue,
+                    OverlayColor = Color.Gray,
+                    Opacity = 0.6,
+                    DefaultMessage = AppResources.Removing
+                };
+
+                await Loading.Instance.StartAsync(async (progress) =>
+                {
+                    UserInfo.RemoveUserInfo();
+
+                    await Task.Delay(1000);
+                });
+
+                DependencyService.Get<IToast>().Show(AppResources.SettingPage_Logout_SuccessMessage);
+
+                await Task.Delay(1000);
+
+                System.Environment.Exit(0);
+            }
+            catch (Exception ex)
+            {
+#if DEBUG
+                DependencyService.Get<IToast>().Show(ex.ToString());
+#endif
+                DependencyService.Get<IToast>().Show(AppResources.WorkFail);
             }
             finally
             {

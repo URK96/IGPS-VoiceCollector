@@ -12,7 +12,7 @@ namespace IGPS.Views
     public partial class MainHomePage : ContentPage
     {
         MainPage RootPage => Application.Current.MainPage as MainPage;
-        MenuPage MainMenuPage => RootPage.Master as MenuPage;
+        MenuPage MainMenuPage => RootPage.Flyout as MenuPage;
 
         public MainHomePage()
         {

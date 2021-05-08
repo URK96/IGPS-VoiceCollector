@@ -9,7 +9,7 @@ using Xamarin.Forms;
 namespace IGPS.Views
 {
     [DesignTimeVisible(false)]
-    public partial class MainPage : MasterDetailPage
+    public partial class MainPage : FlyoutPage
     {
         Dictionary<int, NavigationPage> menuPages = new Dictionary<int, NavigationPage>();
 

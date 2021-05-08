@@ -10,8 +10,17 @@
         <sv:Section Title="General">
             <sv:CommandCell Title="{x:Static local:AppResources.SettingPage_UploadAllVoice_Title}" Description="{x:Static local:AppResources.SettingPage_UploadAllVoice_Description}"
                             Command="{Binding UploadCommand}"/>
+            <sv:CommandCell Title="{x:Static local:AppResources.SettingPage_RemoveAllData_Title}" Description="{x:Static local:AppResources.SettingPage_RemoveAllData_Description}"
+                            Command="{Binding RemoveAllDataCommand}"/>
+            <sv:CommandCell Title="{x:Static local:AppResources.SettingPage_Logout_Title}" Description="{x:Static local:AppResources.SettingPage_Logout_Description}"
+                            Command="{Binding LogoutCommand}"/>
         </sv:Section>
-        
+
+        <sv:Section Title="Text">
+            <sv:CommandCell Title="{x:Static local:AppResources.SettingPage_RecordTextSize_Title}" Description="{x:Static local:AppResources.SettingPage_RecordTextSize_Description}"
+                            Command="{Binding RecordTextSizeCommand}"/>
+        </sv:Section>
+
     </sv:SettingsView>
     
 </ContentPage>

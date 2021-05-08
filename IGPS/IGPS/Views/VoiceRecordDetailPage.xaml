@@ -20,7 +20,7 @@
                 <Label HorizontalOptions="FillAndExpand" 
                        Text="녹음할 내용" HorizontalTextAlignment="Center" FontSize="Title" FontAttributes="Bold" />
 
-                <Label Margin="0, 30, 0, 0" Padding="30, 0, 30, 0" 
+                <Label x:Name="RecordTextLabel" Margin="0, 30, 0, 0" Padding="30, 0, 30, 0" 
                        Text="{Binding Item.VoiceText}" FontSize="Large" />
 
             </StackLayout>

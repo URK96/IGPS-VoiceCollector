@@ -40,8 +40,9 @@
                             <StackLayout Orientation="Vertical"
                                          HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                 <Label Text="{Binding Number, StringFormat='No. {0}'}" FontSize="Title" FontAttributes="Bold" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" />
-                                <Label Text="{Binding IsRecorded, StringFormat='녹음 여부 : {0}'}" FontSize="Body" />
-                                <Label Text="{Binding IsUploaded, StringFormat='업로드 여부 : {0}'}" FontSize="Body" />
+                                <!--<Label Text="{Binding IsRecorded, StringFormat='녹음 여부 : {0}'}" FontSize="Body" />
+                                <Label Text="{Binding IsUploaded, StringFormat='업로드 여부 : {0}'}" FontSize="Body" />-->
+                                <Label Text="{Binding CompletedText}" FontSize="Body" TextColor="{Binding UploadTextColor}" />
                             </StackLayout>
                         </Frame>
                     </ContentView>

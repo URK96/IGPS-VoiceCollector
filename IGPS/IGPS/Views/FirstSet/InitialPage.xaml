@@ -24,11 +24,11 @@
                 <Entry x:Name="FirstSetInitialInput" Keyboard="Text" MaxLength="10" HorizontalTextAlignment="Center"
                        Margin="0, 20, 0, 0"
                        TextChanged="FirstSetInitialInput_TextChanged" />
-                <Label x:Name="FirstSetInitialInputStatus" IsVisible="false"
+                <Label x:Name="FirstSetInitialInputStatus" IsVisible="True"
                        Text="{x:Static local:AppResources.UserFirstSet_InputError_Initial5}" TextColor="Red" FontSize="Caption" HorizontalTextAlignment="Center"/>
             </StackLayout>
 
-            <Button x:Name="FirstSetInitialNextButton" IsEnabled="false"
+            <Button x:Name="FirstSetInitialNextButton" IsEnabled="False"
                     Text="{x:Static local:AppResources.UserFirstSet_NextButton_Next}" FontSize="Large" TextColor="White"
                     AbsoluteLayout.LayoutBounds=".5, .75, .7, .08"
                     AbsoluteLayout.LayoutFlags="All"

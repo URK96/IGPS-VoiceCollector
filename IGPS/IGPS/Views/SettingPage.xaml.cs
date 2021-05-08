@@ -12,6 +12,8 @@ namespace IGPS.Views
         {
             InitializeComponent();
 
+            Title = AppResources.SettingPage_Title;
+
             BindingContext = new SettingViewModel();
         }
     }
